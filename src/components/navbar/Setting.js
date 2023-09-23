@@ -1,0 +1,83 @@
+import React from 'react'
+import { Avatar, Box, Button, Switch, Typography } from '@mui/material'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { DarkMode } from '../../quora/Quora';
+import { useContext } from 'react';
+
+const buttonStyles = {
+  fontWeight: '100',
+  width: '100%',
+  p: '5px 20px',
+  justifyContent: 'flex-start',
+  textAlign: 'left',
+  textTransform: 'inherit',
+
+}
+
+const iconStyles = {
+  fontSize: '19px',
+  mr: '5px'
+}
+
+const Setting = () => {
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const { darkMode, setDarkMode } = useContext(DarkMode);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem('user');
+    toast.success("User logout successfully");
+    navigate("/login");
+
+  }
+
+  return (
+    <Box
+      sx={{
+        border: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`,
+        borderRadius: '4px',
+        backgroundColor: `${darkMode ? '#1d1b1b' : 'white'}`,
+        width: '260px',
+      }}>
+
+      <Box sx={{ p: '20px', borderBottom: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`, mt: '10px' }}>
+        <Avatar src={user?.data?.name}
+          alt={user?.data?.name} />
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '10px' }}>
+          <Typography variant='h6' sx={{ fontWeight: '650', color: `${darkMode ? '#d5d1d1' : 'black'}`, }}>{user?.data?.name}</Typography>
+          <KeyboardArrowRightIcon sx={{ color: `${darkMode ? '#d5d1d1' : 'black'}`, }} />
+        </Box>
+      </Box>
+
+      <Box>
+        <Box sx={{ borderBottom: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`, py: '10px' }}>
+          <Box>
+            <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }}><BookmarksOutlinedIcon sx={iconStyles} /> Bookmarks</Button>
+          </Box>
+        </Box>
+        <Box sx={{ borderBottom: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`, py: '10px' }}>
+          <Box>
+            <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }} onClick={toggleDarkMode}>
+              {darkMode ? 'Light Mode' : 'Dark Mode'}
+              <Switch sx={{ ml: '85px' }} checked={darkMode} readOnly />
+            </Button>
+            <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }}>Settings</Button>
+            <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }} onClick={handleLogout} >Logout</Button>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
+export default Setting
