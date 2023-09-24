@@ -64,6 +64,10 @@ const Following = () => {
         mx:'16px',
         width:'55%'
       },
+      '@media (min-width: 1100px)': {
+        mx:'16px',
+        width:'610px'
+      }
     }}>
       <AddQuestion />
 
