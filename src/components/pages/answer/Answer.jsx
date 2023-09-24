@@ -87,11 +87,170 @@ const Answer = () => {
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
             <Box>
               <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
             </Box>
             <Box>
-            <Tooltip title="DownVote">
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
                 <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
                   <ThumbDownOutlinedIcon />
                 </IconButton>
@@ -112,11 +271,11 @@ const Answer = () => {
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
             <Box>
               <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
             </Box>
             <Box>
-            <Tooltip title="DownVote">
+              <Tooltip title="DownVote">
                 <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
                   <ThumbDownOutlinedIcon />
                 </IconButton>
@@ -127,29 +286,7 @@ const Answer = () => {
         </Box>
 
         <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
-          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-            <Box>
-              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
-              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
-            </Box>
-          </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
-            <Box>
-              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
-            </Box>
-            <Box>
-            <Tooltip title="DownVote">
-                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
-                  <ThumbDownOutlinedIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
-          </Box>
-        </Box>
 
-        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
           <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
             <Box>
               <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
@@ -160,20 +297,22 @@ const Answer = () => {
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
             <Box>
               <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
             </Box>
             <Box>
-            <Tooltip title="DownVote">
+              <Tooltip title="DownVote">
                 <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
                   <ThumbDownOutlinedIcon />
                 </IconButton>
               </Tooltip>
             </Box>
           </Box>
+
         </Box>
 
         <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
           <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
             <Box>
               <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
@@ -184,35 +323,37 @@ const Answer = () => {
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
             <Box>
               <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
             </Box>
             <Box>
-            <Tooltip title="DownVote">
+              <Tooltip title="DownVote">
                 <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
                   <ThumbDownOutlinedIcon />
                 </IconButton>
               </Tooltip>
             </Box>
           </Box>
+
         </Box>
 
         <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
           <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
             <Box>
               <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
-              <p style={{ opacity: '0.6', fontSize: '13px' }}><span sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</span>  · Last followed</p>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
             </Box>
           </Box>
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
             <Box>
               <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
-              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
             </Box>
             <Box>
-            <Tooltip title="DownVote">
+              <Tooltip title="DownVote">
                 <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
                   <ThumbDownOutlinedIcon />
                 </IconButton>
@@ -221,8 +362,83 @@ const Answer = () => {
           </Box>
 
         </Box>
-        <Box sx={{ textAlign: 'center', py: '2px' }}>
-          <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>More <KeyboardArrowDownIcon /></Button>
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
+        </Box>
+
+        <Box sx={{ borderBottom: `1px solid ${darkMode?'#484848':'#e6dada'}`, p: '14px', }}>
+
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <Box>
+              <Typography variant='h6' sx={{ fontWeight: '700', mb: '10px', fontSize: '17px' }}>If 12% of X amounts to 108, what is the value of X?</Typography>
+              <span style={{ opacity: '0.6', fontSize: '13px' }}><Link to="none" sx={{ color: `${darkMode?'#fafaf7':'black'}`, textDecoration: 'none', ':hover': { textDecoration: 'underline', cursor: 'pointer' } }}>3 Answers</Link>  · Last followed</span>
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '5px' }}>
+            <Box>
+              <Button sx={{...buttonStyles, border:`1px solid ${darkMode?'#484848':'#e6dada'}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><DrawOutlinedIcon />Answers</Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><RssFeedOutlinedIcon />Follow  · </Button>
+              <Button sx={{...buttonStyles, backgroundColor:`${darkMode?'':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}><EditOffOutlinedIcon />Pass</Button>
+            </Box>
+            <Box>
+              <Tooltip title="DownVote">
+                <IconButton sx={{color:`${darkMode?'gray':''}`, ':hover':{backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`}}}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+
         </Box>
       </Box>
     </Box>
