@@ -50,7 +50,7 @@ const FollowingData = (props) => {
             postId: `${postId}`,
           },
           headers: {
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user?.token}`,
             projectId: `bc73q6nn4srr`,
           }
         })
@@ -74,7 +74,7 @@ const FollowingData = (props) => {
             postId: `${postId}`,
           },
           headers: {
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user?.token}`,
             projectId: `bc73q6nn4srr`,
           }
         })

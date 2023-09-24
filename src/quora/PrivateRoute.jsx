@@ -7,7 +7,6 @@ function getUser(){
 
   if(user){
     user = JSON.parse(user);
-
   }
   else{
     user = null;

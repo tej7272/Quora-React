@@ -31,12 +31,7 @@ const Quora = () => {
 
   return (
     <DarkMode.Provider value={{ darkMode, setDarkMode }}>
-      <Box sx={{
-        display: 'flex',
-        //  justifyContent: 'center', 
-         height: '100%', width: '100%', 
-        // overflow: 'auto'
-      }}>
+      <Box sx={{ display: 'flex', height: '100%', width: '100%', }}>
         
           <Navbar />
 

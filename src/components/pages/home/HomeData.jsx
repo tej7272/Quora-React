@@ -49,7 +49,7 @@ const HomeData = (props) => {
           postId: `${postId}`,
         },
         headers: {
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `Bearer ${user?.token}`,
           projectId: `bc73q6nn4srr`,
         }
       })
@@ -73,7 +73,7 @@ const HomeData = (props) => {
           postId: `${postId}`,
         },
         headers: {
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `Bearer ${user?.token}`,
           projectId: `bc73q6nn4srr`,
         }
       })

@@ -17,7 +17,7 @@ export const authApi = createApi({
                     headers: {
                         'Content-Type': 'application/json',
                         'projectId': 'bc73q6nn4srr',
-                        'Authorization':`Bearer ${user.token}`
+                        'Authorization':`Bearer ${user?.token}`
                     },
                 }
             }

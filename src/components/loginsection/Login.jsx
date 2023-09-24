@@ -5,13 +5,13 @@ import Quoralogo from '../../images/Quora_Logo.png';
 import Google from '../../images/Google.png';
 import Facebook from '../../images/Facebook.png';
 import Signup from './Signup';
-import Popup from '../controls/Popup';
 import Forgotpassword from './Forgotpassword';
 import Controls from '../controls/Controls';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { loginUser } from '../../services/authSlice';
+import LoginPopup from '../controls/LoginPopup';
 
 const Login = () => {
 
@@ -188,12 +188,12 @@ const Login = () => {
                   }}>
                   Sign up with email
                 </Button>
-                <Popup
+                <LoginPopup
                   setOpen={setOpenSignUp}
                   open={openSignUp}
                 >
                   <Signup /> 
-                </Popup>
+                </LoginPopup>
               </Box>
             </Box>
           </Box>
@@ -229,14 +229,13 @@ const Login = () => {
                         textDecoration: 'underline'
                       }
                     }}>Forgot password?</Box>
-                  <Popup
+                  <LoginPopup
                     setOpen={setOpenForgot}
                     open={openForgot}
                   >
                     <Forgotpassword />
-                  </Popup>
+                  </LoginPopup>
                   <Controls.Button type='submit' text='Login' 
-                  // onClick={handleLogin}
                   />
                 </Box>
               </form>
