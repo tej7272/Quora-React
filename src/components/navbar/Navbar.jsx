@@ -21,15 +21,11 @@ import { DarkMode } from '../../quora/Quora';
 const buttonStyles = {
   color: 'white',
   border: 'none',
-  outline: 'none',
   textTransform: 'none',
   borderRadius: '25px',
-  backgroundColor: '#b71414',
   fontSize: '14px',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
   height: '32px',
+  outline: 'none'
 }
 
 
@@ -57,7 +53,7 @@ function Navbar() {
             color: 'black',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '1150px',
+            width: '1110px',
             mx: 'auto'
           }}>
           <Link to="/quora/">
@@ -81,7 +77,7 @@ function Navbar() {
             <Tooltip title="Home">
               <Button sx={{
                 ':focus': {
-                  backgroundColor:'#c94747'
+                  backgroundColor: '#c94747'
                 }
               }}>
                 <HomeOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
@@ -92,7 +88,7 @@ function Navbar() {
             <Tooltip title="Following">
               <Button sx={{
                 ':focus': {
-                  backgroundColor:'#c94747'
+                  backgroundColor: '#c94747'
                 }
               }}>
                 <ListAltOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
@@ -103,7 +99,7 @@ function Navbar() {
             <Tooltip title="Answer" >
               <Button sx={{
                 ':focus': {
-                  backgroundColor:'#c94747'
+                  backgroundColor: '#c94747'
                 }
               }}>
                 <DrawOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
@@ -114,7 +110,7 @@ function Navbar() {
             <Tooltip title="Spaces">
               <Button sx={{
                 ':focus': {
-                  backgroundColor:'#c94747'
+                  backgroundColor: '#c94747'
                 }
               }}>
                 <GroupsOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
@@ -125,7 +121,7 @@ function Navbar() {
             <Tooltip title="Notifications">
               <Button sx={{
                 ':focus': {
-                  backgroundColor:'#c94747'
+                  backgroundColor: '#c94747'
                 }
               }}>
                 <NotificationsOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
@@ -145,7 +141,7 @@ function Navbar() {
             <SearchIcon sx={{ color: 'grey', mr: '5px' }} fontSize="small" />
             <InputBase
               placeholder="Search…"
-              sx={{ fontSize: '15px', width: '275px', color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}` }}
+              sx={{ fontSize: '15px', width: '240px', color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`, flexGrow: 1 }}
             // onChange={(e)=>setSearchTerm(e.target.value)}
             />
           </Box>
@@ -163,7 +159,8 @@ function Navbar() {
               border: `1px solid ${darkMode ? '#444' : '#dbcaca'}`,
               ':hover': {
                 outline: 'none'
-              }
+              },
+              display: { xs: 'none', sm: 'none', md: 'inline-block' }
             }}
           >
             Try Quora+
@@ -175,7 +172,7 @@ function Navbar() {
             </IconButton>
           </Tooltip>
           {/* {openSettingModal && <Setting />} */}
-          <Modal open={openSettingModal} onClose={()=>setOpenSettingModal(false)} sx={{ top: '50px', left: '60%' }}>
+          <Modal open={openSettingModal} onClose={() => setOpenSettingModal(false)} sx={{ top: '50px', left: '60%' }}>
             <Setting />
           </Modal>
 
@@ -183,17 +180,27 @@ function Navbar() {
             <LanguageOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
           </Button>
           <ButtonGroup>
-            <Button sx={buttonStyles} onClick={() => setOpenAddModal(true)}
+            <Button
+              sx={{
+                ...buttonStyles,
+                backgroundColor: `${darkMode ? '#b71414' : '#b71414'}`,
+                ':hover': { backgroundColor: `${darkMode ? 'brown' : 'brown'}` }
+              }}
+              onClick={() => setOpenAddModal(true)}
             >
               Add question
             </Button>
             <Tooltip title="Create Post">
-              <Button sx={buttonStyles} onClick={() => setOpenAddModal(true)}>
+              <Button sx={{
+                ...buttonStyles,
+                backgroundColor: `${darkMode ? '#b71414' : '#b71414'}`,
+                ':hover': { backgroundColor: `${darkMode ? 'brown' : 'brown'}` }
+              }} onClick={() => setOpenAddModal(true)}>
                 <KeyboardArrowDownIcon />
               </Button>
             </Tooltip>
           </ButtonGroup>
-          <Popup open={openAddModal} setOpen={setOpenAddModal} sx={{backgroundColor:`${darkMode?'#272727':''}`}}>
+          <Popup open={openAddModal} setOpen={setOpenAddModal} sx={{ backgroundColor: `${darkMode ? '#272727' : ''}` }}>
             <SubmitPost />
           </Popup>
 

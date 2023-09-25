@@ -41,7 +41,8 @@ const Quora = () => {
               pt: '65px',
               '@media (min-width: 480px)': {
                 mx:0,
-                width:'100%'
+                width:'100%',
+                
               },
 
               '@media (min-width: 1110px)': {

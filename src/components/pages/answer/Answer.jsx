@@ -5,7 +5,6 @@ import { red } from '@mui/material/colors';
 import DrawOutlinedIcon from '@mui/icons-material/DrawOutlined';
 import RssFeedOutlinedIcon from '@mui/icons-material/RssFeedOutlined';
 import EditOffOutlinedIcon from '@mui/icons-material/EditOffOutlined';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 
 import { useContext } from 'react';
