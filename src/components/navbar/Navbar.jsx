@@ -15,7 +15,8 @@ import SubmitPost from './SubmitPost';
 import Popup from '../controls/Popup'
 import '../../App.css'
 import { useContext } from 'react';
-import { DarkMode } from '../../quora/Quora';
+import { DarkMode, SearchContext } from '../../quora/Quora';
+
 
 
 const buttonStyles = {
@@ -33,6 +34,8 @@ function Navbar() {
 
   const [openSettingModal, setOpenSettingModal] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
+  const { searchTerm, setSearchTerm } = useContext(SearchContext);
+
   const { darkMode } = useContext(DarkMode);
 
   const handleSettingModal = () => {
@@ -45,6 +48,7 @@ function Navbar() {
   }
 
   return (
+
     <Box position="fixed" sx={{ boxShadow: '0', border: `1px solid ${darkMode ? '#292929' : '#d7d5d5'}`, width: '100%', zIndex: '3000' }}  >
       <Box sx={{ backgroundColor: `${darkMode ? '#292929' : 'white'}`, py: '0.18rem', }}>
         <Box
@@ -142,7 +146,9 @@ function Navbar() {
             <InputBase
               placeholder="Search…"
               sx={{ fontSize: '15px', width: '240px', color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`, flexGrow: 1 }}
-            // onChange={(e)=>setSearchTerm(e.target.value)}
+              type='text'
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </Box>
           <Button

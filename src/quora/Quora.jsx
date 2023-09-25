@@ -16,9 +16,11 @@ import Requests from '../components/pages/answer/Requests'
 import Spaces from '../components/pages/spaces/Spaces'
 
 export const DarkMode = createContext();
+export const SearchContext = createContext();
 
 const Quora = () => {
   const [darkMode, setDarkMode] = useState();
+  const [searchTerm, setSearchTerm] = useState();
 
   if (!darkMode) {
     document.body.style.backgroundColor = "#ddd";
@@ -30,6 +32,7 @@ const Quora = () => {
   }
 
   return (
+    <SearchContext.Provider value={{searchTerm, setSearchTerm}}>
     <DarkMode.Provider value={{ darkMode, setDarkMode }}>
       <Box sx={{ display: 'flex', height: '100%', width: '100%', }}>
         
@@ -135,6 +138,7 @@ const Quora = () => {
         </Box>
       </Box>
     </DarkMode.Provider>
+    </SearchContext.Provider>
   )
 }
 

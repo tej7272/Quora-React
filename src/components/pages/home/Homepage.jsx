@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Box } from '@mui/material'
 import AddQuestion from '../../support/AddQuestion';
 import HomeData from './HomeData';
+import { SearchContext } from '../../../quora/Quora';
 
 
 const Homepage = () => {
@@ -9,6 +10,9 @@ const Homepage = () => {
   const [page, setPage] = useState(1);
   const [postList, setPostList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [filteredPostList, setFilteredPostList] = useState([]);
+  const {searchTerm} = useContext(SearchContext);
+
 
   const handleInfiniteScroll = async() =>{
       try {
@@ -22,6 +26,7 @@ const Homepage = () => {
         console.log(err);
       }
   }
+
   useEffect(()=>{
     setIsLoading(true);
       fetch(`https://academics.newtonschool.co/api/v1/quora/post?limit=10&page=${page}` ,{
@@ -42,6 +47,25 @@ const Homepage = () => {
           setIsLoading(false);
       })
   }, [page]);
+
+
+  useEffect(() => {
+    if (!searchTerm) {
+
+      setFilteredPostList(postList);
+    } 
+    else
+     {
+      const filteredPosts = postList?.filter((post) =>
+
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.content.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredPostList(filteredPosts);
+    }
+
+    // eslint-disable-next-line
+  }, [searchTerm, postList]);
 
   useEffect(()=>{
     window.addEventListener("scroll", handleInfiniteScroll)
@@ -70,15 +94,16 @@ const Homepage = () => {
       }}>
 
       <AddQuestion />
-      {isLoading ? <div>loading...</div> :
-        (postList.length && postList.map((post, index) => {
-          return (
-            <HomeData key={index} {...post} />
 
-          )
-        }
-        ))
-      }
+      {isLoading ? (
+        <div>loading...</div>
+      ) : (
+        filteredPostList.length &&
+        filteredPostList.map((post, index) => {
+          return <HomeData key={index} {...post} />;
+        })
+      )}
+
     </Box>
   )
 }
