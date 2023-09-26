@@ -33,6 +33,10 @@ const Setting = () => {
 
   const navigate = useNavigate();
 
+  const handleProfile = ()=>{
+    navigate("/quora/spaces")
+  }
+
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem('user');
@@ -71,7 +75,7 @@ const Setting = () => {
               {darkMode ? 'Light Mode' : 'Dark Mode'}
               <Switch sx={{ ml: '85px' }} checked={darkMode} readOnly />
             </Button>
-            <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }}>Settings</Button>
+            <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }} onClick={handleProfile}>Settings</Button>
             <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }} onClick={handleLogout} >Logout</Button>
           </Box>
         </Box>

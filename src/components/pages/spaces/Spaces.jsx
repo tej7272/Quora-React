@@ -1,22 +1,12 @@
-import { Box, Typography } from '@mui/material'
+import { Box} from '@mui/material'
 import React from 'react'
+import CommingSoon from '../../../images/under-construction.jpg'
+
 
 const Spaces = () => {
   return (
     <Box >
-      <Typography variant="h2" 
-      sx={{
-        '@media (min-width: 300px)': {
-          m:'150px 40px',
-        },
-        '@media (min-width: 600px)': {
-          m:'150px 150px',
-        },
-        '@media (min-width: 900px)': {
-          m:'150px 330px',
-        },
-        }}
-        >Comming Soon</Typography>
+        <img src={CommingSoon} alt='Comming Soon' style={{height:'90vh', width:'72vw'}}/>
     </Box>
   )
 }
