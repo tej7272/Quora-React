@@ -36,7 +36,6 @@ const Signup = () => {
           setPassword('');
           toast.success("User account created successfully");
           navigate('/quora')
-          console.log('result.payload..',result.payload)
         }
         else{
           toast.error(result.error.message);

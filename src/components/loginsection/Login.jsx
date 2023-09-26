@@ -37,8 +37,7 @@ const Login = () => {
         setEmail('');
         setPassword('');
         toast.success("User login successfully");
-        navigate('/quora')
-        console.log('result.payload..',result.payload)
+        navigate('/quora');
       }
       else{
         toast.error(result.error.message);
