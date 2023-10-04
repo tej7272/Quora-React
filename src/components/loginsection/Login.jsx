@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Button, CardMedia, FormLabel, Link, Typography } from '@mui/material';
-import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
+import { Box, CardMedia, FormLabel, Link, Typography } from '@mui/material';
 import Quoralogo from '../../images/Quora_Logo.png';
-import Google from '../../images/Google.png';
-import Facebook from '../../images/Facebook.png';
 import Signup from './Signup';
 import Forgotpassword from './Forgotpassword';
 import Controls from '../controls/Controls';
@@ -20,29 +17,36 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLoginEvent =(e)=>{
+  const handleLoginEvent = (e) => {
     e.preventDefault();
-    let Credentials={
+    let Credentials = {
       email,
       password,
       appType: "quora"
     }
-    dispatch(loginUser(Credentials))
-    .then((result)=>{
-      if(result.payload){
-        setEmail('');
-        setPassword('');
-        toast.success("User login successfully");
-        navigate('/quora');
-      }
-      else{
-        toast.error(result.error.message);
-      }
-    })
+    if (!email || !password) {
+      toast.error("please provide email and password");
+    }
+    else {
+
+      dispatch(loginUser(Credentials))
+        .then((result) => {
+          if (result.payload) {
+            setEmail('');
+            setPassword('');
+            toast.success("User login successfully");
+            navigate('/quora');
+          }
+          else {
+            toast.error(result.error.message);
+            console.log("result.error.message", result.error.message)
+          }
+        })
+    }
   }
 
   const handleSignUp = () => {
@@ -113,87 +117,32 @@ const Login = () => {
                   Privacy Policy
                 </Link>.
               </Typography>
+
               <Box sx={{
-                mt: '20px'
-
-              }}>
-
-                <Box sx={{
-                  display: 'flex',
-                  cursor: 'pointer',
-                  mt: '1rem',
-                  py: '10px',
-                  border: '1px solid #e6dada',
-                  borderRadius: '4px',
-                  fontSize: '14px',
-                  px: '5px',
-                  ':hover': {
-                    backgroundColor: 'whitesmoke'
-                  }
+                display: 'flex',
+                cursor: 'pointer',
+                mt: '70px',
+                py: '10px',
+                border: '1px solid #e6dada',
+                borderRadius: '4px',
+                fontSize: '14px',
+                justifyContent: 'center',
+                ':hover': {
+                  backgroundColor: 'whitesmoke'
+                }
 
 
-                }}>
-                  <CardMedia
-                    component="img"
-                    image={Google}
-                    alt="QuoraLogo"
-                    height='25px'
-                    sx={{
-                      width: 'auto',
-                      objectFit: 'cover',
-                      mr: '5px'
-
-                    }}
-                  />
-                  <Box fontWeight='300'>Continue with Google</Box>
-                </Box>
-                <Box sx={{
-                  display: 'flex',
-                  cursor: 'pointer',
-                  my: '10px',
-                  py: '10px',
-                  px: '5px',
-                  fontSize: '14px',
-                  border: '1px solid #e6dada',
-                  borderRadius: '4px',
-                  ':hover': {
-                    backgroundColor: 'whitesmoke'
-                  }
-
-                }}>
-                  <CardMedia
-                    component="img"
-                    image={Facebook}
-                    alt="QuoraLogo"
-                    height='25px'
-                    sx={{
-                      width: 'auto',
-                      objectFit: 'cover',
-                      mr: '5px',
-
-                    }}
-                  />
-                  <Box>Continue with Facebook</Box>
-                </Box>
-
-                <Button
-                  onClick={handleSignUp}
-                  sx={{
-                    width: '100%',
-                    fontSize: 'small',
-                    textTransform: 'inherit',
-                    borderRadius: '20px',
-                    color: 'gray'
-                  }}>
-                  Sign up with email
-                </Button>
-                <LoginPopup
-                  setOpen={setOpenSignUp}
-                  open={openSignUp}
-                >
-                  <Signup /> 
-                </LoginPopup>
+              }}
+                onClick={handleSignUp}
+              >
+                Sign up with email
               </Box>
+              <LoginPopup
+                setOpen={setOpenSignUp}
+                open={openSignUp}
+              >
+                <Signup />
+              </LoginPopup>
             </Box>
           </Box>
           <Box sx={{ width: '330px', color: '#393535' }}>
@@ -208,7 +157,7 @@ const Login = () => {
                   placeholder='Your email'
                   type='email'
                   value={email}
-                  onChange={(e)=>setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <FormLabel style={{ fontSize: '12px', fontWeight: '800' }}>Password</FormLabel>
                 <Controls.Input
@@ -216,7 +165,7 @@ const Login = () => {
                   placeholder='Your password'
                   type='password'
                   value={password}
-                  onChange={(e)=>setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <Box onClick={handleForgot}
@@ -234,16 +183,15 @@ const Login = () => {
                   >
                     <Forgotpassword />
                   </LoginPopup>
-                  <Controls.Button type='submit' text='Login' 
+                  <Controls.Button type='submit' text='Login'
                   />
                 </Box>
               </form>
             </Box>
           </Box>
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', borderTop: '1px solid #e6dada', borderBottom: '1px solid #e6dada', width: '100%', justifyContent: 'center', py: '12px' }}>
-          <a href="https://hi.quora.com/" target='_blank' style={{ fontSize: 'small', textDecoration: 'none', }} rel="noreferrer">हिन्दी</a>
-          <KeyboardArrowRightOutlinedIcon fontSize='medium' sx={{ color: 'gray' }} />
+        <Box sx={{ display: 'flex', alignItems: 'center', borderTop: '1px solid #e6dada', borderBottom: '1px solid #e6dada', width: '100%', justifyContent: 'center' }}>
+          <p style={{ fontSize: 'small', }}>हिन्दी</p>
         </Box>
         <Box fontSize='small' sx={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'gray', backgroundColor: '#f1f0f0', width: '100%', }}>
           <Box>

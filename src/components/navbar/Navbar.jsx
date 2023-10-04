@@ -35,6 +35,7 @@ function Navbar() {
   const [openSettingModal, setOpenSettingModal] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const { darkMode } = useContext(DarkMode);
 
@@ -174,10 +175,9 @@ function Navbar() {
 
           <Tooltip title="Open settings">
             <IconButton onClick={handleSettingModal} sx={{ p: 0, }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{ width: '30px', height: '30px' }} />
+              <Avatar alt={user?.data?.name}  src={user?.data?.name} sx={{ width: '35px', height: '35px', color:'black' }} />
             </IconButton>
           </Tooltip>
-          {/* {openSettingModal && <Setting />} */}
           <Modal open={openSettingModal} onClose={() => setOpenSettingModal(false)} sx={{ top: '50px', left: '60%' }}>
             <Setting />
           </Modal>

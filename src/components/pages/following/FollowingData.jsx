@@ -35,7 +35,9 @@ const FollowingData = (props) => {
   const [like, setLike] = useState(likeCount);
   const [showComments, setShowComments] = useState(false);
   const [commentsList, setCommentsList] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user"))
+  const [colorUp, setColorUp] = useState("#4242ca");
+  const [colorDown, setColorDown] = useState("gray")
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const postId = _id;
   const getCommentsData = useCommentQuery(postId);
@@ -57,8 +59,8 @@ const FollowingData = (props) => {
       const data = await res.json();
       if (data.status === "success") {
         setLike((prevState) => prevState + 1);
-        // setColorUp("#ff4500")
-        // setColorDown("#ddd")
+        setColorUp("#ff4500");
+        setColorDown("gray");
       }
     } catch (err) {
       console.log(err);
@@ -81,8 +83,8 @@ const FollowingData = (props) => {
       const data = await res.json();
       if (data.status === "success") {
         setLike((prevState) => prevState - 1);
-        // setColorUp("#ddd");
-        // setColorDown("#ff4500")
+        setColorUp("#4242ca");
+        setColorDown("#ff4500");
       }
     } catch (err) {
       console.log(err);
@@ -131,11 +133,6 @@ const FollowingData = (props) => {
               R
             </Avatar>
           }
-          // action={
-          //   <IconButton aria-label="settings">
-          //     <ClearOutlinedIcon />
-          //   </IconButton>
-          // }
           title={<Typography sx={{ fontSize: '13px', fontWeight: '600' }}>{channel.name}</Typography>}
           subheader={<p style={{ fontSize: '13px', fontWeight: '400', margin: 0, color:`${darkMode?'#b8b4b4':''}` }}>Posted by <span style={{ fontWeight: '800', color:`${darkMode?'#b8b4b4':''}` }}>{author.name}</span></p>}
         />
@@ -147,11 +144,11 @@ const FollowingData = (props) => {
         <CardActions sx={{ height: '45px' }}>
           <ButtonGroup variant="text" color='secondary' >
             <Button variant="text" sx={{...buttonStyles, backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#555454':'#ece9e9'}`}}} onClick={onClickUpvote} >
-              <ThumbUpOutlinedIcon fontSize='small' sx={{ color: '#4242ca', mr: '3px' }} />{`Upvote .${like}`}
+              <ThumbUpOutlinedIcon fontSize='small' sx={{ color: `${colorUp}`, mr: '3px' }} />{`Upvote .${like}`}
             </Button>
             <Tooltip title="Downvote">
               <Button variant="text" sx={{...buttonStyles, backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#555454':'#ece9e9'}`}}} onClick={onClickDownVote} >
-                <ThumbDownOutlinedIcon fontSize='small' />
+                <ThumbDownOutlinedIcon fontSize='small' sx={{color:`${colorDown}`}}/>
               </Button>
             </Tooltip>
           </ButtonGroup>
