@@ -10,6 +10,20 @@ import { toast } from 'react-toastify';
 import { loginUser } from '../../services/authSlice';
 import LoginPopup from '../controls/LoginPopup';
 
+const formLabelStyles ={
+  fontSize: '13px', 
+  fontWeight: '700', 
+  color:'black' 
+}
+
+const boxStyles = {
+  display:'flex',
+  justifyContent: 'center',
+   alignItems: 'center',
+   width: '100%',
+   color: 'gray'
+}
+
 const Login = () => {
 
   const [openSignUp, setOpenSignUp] = useState(false);
@@ -79,9 +93,9 @@ const Login = () => {
           alignItems: 'center',
           flexDirection: 'column',
           borderRadius: '4px',
-          width: '700px',
+          width: '43rem',
           justifyContent: 'center',
-          boxSizing: 'border-box'
+          boxSizing: 'border-box',
 
         }}>
         <Box>
@@ -107,7 +121,7 @@ const Login = () => {
             mb: '20px',
             justifyContent: 'center'
           }} >
-          <Box sx={{ width: '330px', borderRight: '1px solid #e6dada' }}>
+          <Box sx={{ width: '20rem', borderRight: '1px solid #e6dada' }}>
             <Box sx={{ mr: '24px', }}>
               <Typography variant='subtitle2' fontSize='13px' sx={{ color: 'gray' }} >
                 By continuing you indicate that you agree to Quora’s
@@ -129,8 +143,6 @@ const Login = () => {
                 ':hover': {
                   backgroundColor: 'whitesmoke'
                 }
-
-
               }}
                 onClick={handleSignUp}
               >
@@ -144,13 +156,13 @@ const Login = () => {
               </LoginPopup>
             </Box>
           </Box>
-          <Box sx={{ width: '330px', color: '#393535' }}>
+          <Box sx={{ width: '20rem', color: '#393535' }}>
             <Box sx={{ ml: '24px', }}>
-              <Box sx={{ borderBottom: '1px solid #e6dada', pb: '8px', fontSize: '15px', }}>
+              <Box sx={{ borderBottom: '1px solid #e6dada', pb: '8px', fontSize: '15px',}}>
                 Login
               </Box>
-              <form style={{ marginTop: '10px' }} onSubmit={handleLoginEvent}>
-                <FormLabel style={{ fontSize: '12px', fontWeight: '800' }}>Email</FormLabel>
+              <form style={{ marginTop: '18px' }} onSubmit={handleLoginEvent}>
+                <FormLabel sx={formLabelStyles}>Email</FormLabel>
                 <Controls.Input
                   name='email'
                   placeholder='Your email'
@@ -158,7 +170,7 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <FormLabel style={{ fontSize: '12px', fontWeight: '800' }}>Password</FormLabel>
+                <FormLabel style={formLabelStyles}>Password</FormLabel>
                 <Controls.Input
                   name='password'
                   placeholder='Your password'
@@ -189,10 +201,10 @@ const Login = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', borderTop: '1px solid #e6dada', borderBottom: '1px solid #e6dada', width: '100%', justifyContent: 'center' }}>
+        <Box sx={{...boxStyles, borderTop: '1px solid #e6dada', borderBottom: '1px solid #e6dada', }}>
           <p style={{ fontSize: 'small', }}>हिन्दी</p>
         </Box>
-        <Box fontSize='small' sx={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'gray', backgroundColor: '#f1f0f0', width: '100%', }}>
+        <Box fontSize='small' sx={{...boxStyles, textAlign: 'center', backgroundColor: '#f1f0f0', }}>
           <Box>
             <Link href='https://www.quora.com/about' target='_blank' rel="noreferrer" underline='hover' sx={{ color: 'gray' }}>About</Link> · <Link
               href='https://www.quora.com/careers' target='_blank' rel="noreferrer" underline='hover' sx={{ color: 'gray' }}>Careers</Link> · <Link

@@ -14,6 +14,7 @@ import Notifications from '../components/pages/notifications/Notifications';
 import Drafts from '../components/pages/answer/Drafts'
 import Requests from '../components/pages/answer/Requests'
 import Spaces from '../components/pages/spaces/Spaces'
+import Topic from '../components/pages/topics/Topic'
 
 export const DarkMode = createContext();
 export const SearchContext = createContext();
@@ -23,7 +24,7 @@ const Quora = () => {
   const [searchTerm, setSearchTerm] = useState();
 
   if (!darkMode) {
-    document.body.style.backgroundColor = "#ddd";
+    document.body.style.backgroundColor = "#F1F2F2";
     document.body.style.color = "black"
   }
   else {
@@ -32,10 +33,10 @@ const Quora = () => {
   }
 
   return (
-    <SearchContext.Provider value={{searchTerm, setSearchTerm}}>
-    <DarkMode.Provider value={{ darkMode, setDarkMode }}>
-      <Box sx={{ display: 'flex', height: '100%', width: '100%', }}>
-        
+    <SearchContext.Provider value={{ searchTerm, setSearchTerm }}>
+      <DarkMode.Provider value={{ darkMode, setDarkMode }}>
+        <Box sx={{ display: 'flex', height: '100%', width: '100%', }}>
+
           <Navbar />
 
           <Box
@@ -43,9 +44,9 @@ const Quora = () => {
               display: 'flex',
               pt: '65px',
               '@media (min-width: 480px)': {
-                mx:0,
-                width:'100%',
-                
+                mx: 0,
+                width: '100%',
+
               },
 
               '@media (min-width: 1110px)': {
@@ -133,11 +134,22 @@ const Quora = () => {
                 }
               />
 
+              <Route
+                path="/topic/science"
+                element={
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Sidebarleft />
+                    <Topic />
+                    <Advertisingsection />
+                  </div>
+                }
+              />
+
             </Routes>
 
+          </Box>
         </Box>
-      </Box>
-    </DarkMode.Provider>
+      </DarkMode.Provider>
     </SearchContext.Provider>
   )
 }

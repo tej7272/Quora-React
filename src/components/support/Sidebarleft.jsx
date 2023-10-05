@@ -12,6 +12,7 @@ import { useState } from 'react';
 import Popup from '../controls/Popup';
 import CreateSpace from '../pages/spaces/CreateSpace';
 import { DarkMode } from '../../quora/Quora';
+import { Link } from 'react-router-dom';
 
 const boxStyles = {
   display: 'flex',
@@ -164,6 +165,7 @@ const Sidebarleft = () => {
           <Typography variant='h6' fontSize='small'>Music</Typography>
         </Box>
 
+        <Link to="/quora/topic/science">
         <Box sx={{
           ...boxStyles,
           ':hover': {
@@ -179,6 +181,7 @@ const Sidebarleft = () => {
           />
           <Typography variant='h6' fontSize='small'>Science</Typography>
         </Box>
+          </Link>
 
       </Box>
     </Box>
