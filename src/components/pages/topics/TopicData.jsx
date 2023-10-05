@@ -24,7 +24,7 @@ const TopicData = (props) => {
 
   
 
-  const { author,  title, description, source, urlToImage} = props;
+  const { author,  title, description, source, image} = props;
   const {darkMode} = useContext(DarkMode);
 
 
@@ -44,7 +44,7 @@ const TopicData = (props) => {
             </Avatar>
           }
           title={<Typography sx={{fontSize:'13px', fontWeight:'600'}}>{author}</Typography>}
-          subheader={<p style={{fontSize:'13px', fontWeight:'400', margin:0, color:`${darkMode?'#b8b4b4':''}` }}>Posted by <span style={{fontWeight:'800', color:`${darkMode?'#b8b4b4':''}` }}>{source.name}</span></p> }
+          subheader={<p style={{fontSize:'13px', fontWeight:'400', margin:0, color:`${darkMode?'#b8b4b4':''}` }}>Posted by <span style={{fontWeight:'800', color:`${darkMode?'#b8b4b4':''}` }}>{source}</span></p> }
         />
         <CardContent>
           <Typography variant="h6" sx={{fontSize:'18px', fontWeight:'600', mb:'20px'}}>{title}</Typography>
@@ -53,8 +53,8 @@ const TopicData = (props) => {
         <CardMedia
           component="img"
           height="350"
-          image={urlToImage}
-          alt={urlToImage}
+          image={image}
+          alt={image}
         />
       </Card>
       
