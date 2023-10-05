@@ -56,9 +56,9 @@ const Sidebarleft = () => {
         <Box
           sx={{
             ...boxStyles,
-            backgroundColor: `${darkMode ? '#1c1c1c' : '#d2d0d0'}`,
+            backgroundColor: `${darkMode ? '#1c1c1c' : ' #ece9e9'}`,
             ':hover': {
-              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              backgroundColor: `${darkMode ? '#222' : '#e3e1e1'}`,
               cursor: 'pointer'
             }
           }}
@@ -70,118 +70,133 @@ const Sidebarleft = () => {
         <Popup open={showCreateSpace} setOpen={setShowCreateSpace}>
           <CreateSpace />
         </Popup>
-        <Box sx={{
-          ...boxStyles,
-          ':hover': {
-            backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
-            cursor: 'pointer'
-          }
-        }}>
-          <CardMedia
-            component="img"
-            image={History}
-            alt="history"
-            sx={CardMediaStyles}
-          />
-          <Typography variant='h6' fontSize='small'>History</Typography>
-        </Box>
-        <Box sx={{
-          ...boxStyles,
-          ':hover': {
-            backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
-            cursor: 'pointer'
-          }
-        }}>
-          <CardMedia
-            component="img"
-            image={Psychology}
-            alt="Psychology"
-            sx={CardMediaStyles}
-          />
-          <Typography variant="h6" fontSize='12px'>Psychology</Typography>
-        </Box>
+        <Link to="/quora/topic/sport" style={{ textDecoration: 'none', }}>
+          <Box sx={{
+            ...boxStyles,
+            ':hover': {
+              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              cursor: 'pointer'
+            }
+          }}>
+            <CardMedia
+              component="img"
+              image={History}
+              alt="history"
+              sx={CardMediaStyles}
+            />
+            <Typography variant='h6' fontSize='small'>Sports</Typography>
+          </Box>
+        </Link>
 
-        <Box sx={{
-          ...boxStyles,
-          ':hover': {
-            backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
-            cursor: 'pointer'
-          }
-        }}>
-          <CardMedia
-            component="img"
-            image={Books}
-            alt="Books"
-            sx={CardMediaStyles}
-          />
-          <Typography variant='h6' fontSize='small'>Books</Typography>
-        </Box>
 
-        <Box sx={{
-          ...boxStyles,
-          ':hover': {
-            backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
-            cursor: 'pointer'
-          }
-        }}>
-          <CardMedia
-            component="img"
-            image={Business}
-            alt="Business"
-            sx={CardMediaStyles}
-          />
-          <Typography variant='h6' fontSize='small'>Business</Typography>
-        </Box>
+        <Link to="/quora/topic/technology" style={{ textDecoration: 'none', }}>
+          <Box sx={{
+            ...boxStyles,
+            ':hover': {
+              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              cursor: 'pointer'
+            }
+          }}>
+            <CardMedia
+              component="img"
+              image={Psychology}
+              alt="Psychology"
+              sx={CardMediaStyles}
+            />
+            <Typography variant="h6" fontSize='12px'>Technology</Typography>
+          </Box>
+        </Link>
 
-        <Box sx={{
-          ...boxStyles,
-          ':hover': {
-            backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
-            cursor: 'pointer'
-          }
-        }}>
-          <CardMedia
-            component="img"
-            image={Movies}
-            alt="Movies"
-            sx={CardMediaStyles}
-          />
-          <Typography variant='h6' fontSize='small'>Movies</Typography>
-        </Box>
+        <Link to="/quora/topic/health" style={{ textDecoration: 'none', }}>
+          <Box sx={{
+            ...boxStyles,
+            ':hover': {
+              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              cursor: 'pointer'
+            }
+          }}>
+            <CardMedia
+              component="img"
+              image={Books}
+              alt="Books"
+              sx={CardMediaStyles}
+            />
+            <Typography variant='h6' fontSize='small'>Health</Typography>
+          </Box>
+        </Link>
 
-        <Box sx={{
-          ...boxStyles,
-          ':hover': {
-            backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
-            cursor: 'pointer'
-          }
-        }}>
-          <CardMedia
-            component="img"
-            image={Music}
-            alt="Music"
-            sx={CardMediaStyles}
-          />
-          <Typography variant='h6' fontSize='small'>Music</Typography>
-        </Box>
+        <Link to="/quora/topic/business" style={{ textDecoration: 'none', }}>
+          <Box sx={{
+            ...boxStyles,
+            ':hover': {
+              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              cursor: 'pointer'
+            }
+          }}>
+            <CardMedia
+              component="img"
+              image={Business}
+              alt="Business"
+              sx={CardMediaStyles}
+            />
+            <Typography variant='h6' fontSize='small'>Business</Typography>
+          </Box>
+        </Link>
 
-        <Link to="/quora/topic/science">
-        <Box sx={{
-          ...boxStyles,
-          ':hover': {
-            backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
-            cursor: 'pointer'
-          }
-        }}>
-          <CardMedia
-            component="img"
-            image={Science}
-            alt="history"
-            sx={CardMediaStyles}
-          />
-          <Typography variant='h6' fontSize='small'>Science</Typography>
-        </Box>
-          </Link>
+        <Link to="/quora/topic/entertainment" style={{ textDecoration: 'none', }}>
+          <Box sx={{
+            ...boxStyles,
+            ':hover': {
+              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              cursor: 'pointer'
+            }
+          }}>
+            <CardMedia
+              component="img"
+              image={Movies}
+              alt="Movies"
+              sx={CardMediaStyles}
+            />
+            <Typography variant='h6' fontSize='small'>Entertainment</Typography>
+          </Box>
+        </Link>
+
+        <Link to="/quora/topic/world" style={{ textDecoration: 'none', }}>
+          <Box sx={{
+            ...boxStyles,
+            ':hover': {
+              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              cursor: 'pointer'
+            }
+          }}>
+            <CardMedia
+              component="img"
+              image={Music}
+              alt="Music"
+              sx={CardMediaStyles}
+            />
+            <Typography variant='h6' fontSize='small'>World</Typography>
+          </Box>
+        </Link>
+
+
+        <Link to="/quora/topic/science" style={{ textDecoration: 'none', }}>
+          <Box sx={{
+            ...boxStyles,
+            ':hover': {
+              backgroundColor: `${darkMode ? '#222' : '#ece9e9'}`,
+              cursor: 'pointer'
+            }
+          }}>
+            <CardMedia
+              component="img"
+              image={Science}
+              alt="history"
+              sx={CardMediaStyles}
+            />
+            <Typography variant='h6' fontSize='small'>Science</Typography>
+          </Box>
+        </Link>
 
       </Box>
     </Box>

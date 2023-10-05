@@ -1,7 +1,10 @@
 import { Box, Button, Card, CardMedia, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import Science from '../../../images/science.jpg'
+import React, { useContext, useEffect, useState } from 'react'
+import Poison from '../../../images/Poison.jpg'
 import TopicData from './TopicData';
+import { DarkMode } from '../../../quora/Quora';
+import { useParams } from 'react-router-dom';
+
 
 const Topic = () => {
 
@@ -10,6 +13,8 @@ const Topic = () => {
     const [color, setColor] = useState("#e6dada");
     const [postList, setPostList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const { darkMode } = useContext(DarkMode);
+    const { topics } = useParams();
 
 
     const handleClick = () => {
@@ -27,14 +32,27 @@ const Topic = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`https://google-news13.p.rapidapi.com/science?lr=en-US`,{
-
-        method : 'GET',
-        headers : {
-            'X-RapidAPI-Key': '76c3a26dfamsh92a9b6bf38ab622p1b636bjsndd215eab7646',
-            'X-RapidAPI-Host': 'google-news13.p.rapidapi.com'
-        }
-    })
+    
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-RapidAPI-Key': 'ce9d1cc48amsh72b0f047a0f9e48p155164jsnab2bdb174cf0',
+                'X-RapidAPI-Host': 'newsnow.p.rapidapi.com',
+            },
+            body: JSON.stringify({
+                query: 'AI',
+                page: 1,
+                time_bounded: true,
+                from_date: '01/02/2021',
+                to_date: '05/06/2021',
+                location: '',
+                category: '',
+                source: topics,
+            }),
+        };
+    
+        fetch('https://newsnow.p.rapidapi.com/newsv2', requestOptions)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`Network response was not ok: ${res.status}`);
@@ -42,15 +60,80 @@ const Topic = () => {
                 return res.json();
             })
             .then((data) => {
-                setPostList((prev) => [...prev, ...data.items]);
+                setPostList(data.news);
+                console.log("data", data);
+                console.log("current topic", topics)
                 setIsLoading(false);
-                console.log("new Data", data);
             })
             .catch((err) => {
-                console.error("Error fetching data:", err);
+                console.error('Error fetching data:', err);
                 setIsLoading(false);
             });
-    }, []);
+        // eslint-disable-next-line
+    }, [topics]);
+
+    let textContent;
+    switch (topics) {
+        case 'sport':
+            textContent = (
+                <>
+                    Sports
+                </>
+            );
+            break;
+        case 'technology':
+            textContent = (
+                <>
+                    Technology
+                </>
+            );
+            break;
+        case 'health':
+            textContent = (
+                <>
+                    Health
+                </>
+            );
+            break;
+        case 'business':
+            textContent = (
+                <>
+                    Business
+                </>
+            );
+            break;
+        case 'entertainment':
+            textContent = (
+                <>
+                    Entertainment
+                </>
+            );
+            break;
+        case 'world':
+            textContent = (
+                <>
+                    World
+                </>
+            );
+            break;
+
+        case 'science':
+            textContent = (
+                <>
+                    Science
+                </>
+            );
+            break;
+
+        default:
+            textContent = (
+                <>
+                    Notifications
+                </>
+            );
+            break;
+    }
+
 
     return (
         <Box
@@ -77,21 +160,21 @@ const Topic = () => {
                     sx={{
                         p: 1,
                         boxShadow: '0px 0px 3px 0px rgba(0,0,0,0.2)',
-                        // background: `${darkMode ? '#292929' : ''}`,
-                        // color: `${darkMode ? '#b8b4b4' : ''}`
+                        background: `${darkMode ? '#292929' : ''}`,
+                        color: `${darkMode ? '#b8b4b4' : ''}`
                     }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', }}>
                         <Box sx={{ p: 1, mr: 1 }}>
                             <CardMedia component='img'
                                 alt="image"
-                                src={Science}
+                                src={Poison}
                                 height='85px'
                                 sx={{ width: '85px', borderRadius: '4px' }}
                             />
 
                         </Box>
                         <Box>
-                            <Typography variant='h6' sx={{ fontWeight: '600', }} > Science</Typography>
+                            <Typography variant='h6' sx={{ fontWeight: '600', }} >{textContent}</Typography>
                             <Button sx={{ textTransform: 'inherit', borderRadius: '20px', color: `${textColor}`, border: `1px solid ${color}`, mt: '8px', fontSize: '13px', p: '0px 10px', }}
                                 onClick={handleClick}
                             >{content}</Button>
@@ -101,10 +184,10 @@ const Topic = () => {
                 </Card>
             </Box>
             {isLoading ? (
-                <div>loading...</div>
+                <div style={{marginTop:'20px'}}>loading...</div>
             ) : (
-                postList.length &&
-                postList.map((post, index) => {
+
+                postList?.map((post, index) => {
                     return <TopicData key={index} {...post} />;
                 })
             )}

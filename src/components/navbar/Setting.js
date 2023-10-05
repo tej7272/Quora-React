@@ -27,7 +27,8 @@ const Setting = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const { darkMode, setDarkMode } = useContext(DarkMode);
 
-  const toggleDarkMode = () => {
+  const toggleDarkMode = (e) => {
+    e.preventDefault();
     setDarkMode(!darkMode);
   };
 

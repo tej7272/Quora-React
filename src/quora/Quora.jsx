@@ -135,7 +135,7 @@ const Quora = () => {
               />
 
               <Route
-                path="/topic/science"
+                path="/topic/:topics"
                 element={
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Sidebarleft />

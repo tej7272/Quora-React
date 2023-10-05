@@ -127,10 +127,8 @@ const Notifications = () => {
       <hr style={{border: `1px solid ${darkMode ? '#444' : '#dbcaca'}` }}/>
       <Box sx={{textAlign:'center', py:'40px'}}>
       <img src="https://qsf.fs.quoracdn.net/-4-ans_frontend_assets.images.empty_states.no_notification_lightmode.png-26-9e0ef76620dd73d3.png" alt='notification' style={{width:'100px'}} />
-      {/* <Typography variant='h6' fontSize='19px' sx={{fontWeight:'600', opacity:'0.7'}}>No New Notifications</Typography> */}
       <Typography variant='h4' sx={{fontWeight:'600', opacity:'0.7'}}>Comming Soon</Typography>
 
-      {/* <Typography variant='h6' fontSize='15px' sx={{fontWeight:'100' , opacity:'0.7'}}>Notifications you received in the last 30 days will show up here.</Typography> */}
 
       </Box>
   </Box>
