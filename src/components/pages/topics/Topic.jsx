@@ -27,7 +27,14 @@ const Topic = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`http://api.mediastack.com/v1/news?access_key=c599231e69c7818128d98329ba9af281`)
+        fetch(`https://google-news13.p.rapidapi.com/science?lr=en-US`,{
+
+        method : 'GET',
+        headers : {
+            'X-RapidAPI-Key': '76c3a26dfamsh92a9b6bf38ab622p1b636bjsndd215eab7646',
+            'X-RapidAPI-Host': 'google-news13.p.rapidapi.com'
+        }
+    })
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`Network response was not ok: ${res.status}`);
@@ -35,7 +42,7 @@ const Topic = () => {
                 return res.json();
             })
             .then((data) => {
-                setPostList((prev) => [...prev, ...data.data]);
+                setPostList((prev) => [...prev, ...data.items]);
                 setIsLoading(false);
                 console.log("new Data", data);
             })
