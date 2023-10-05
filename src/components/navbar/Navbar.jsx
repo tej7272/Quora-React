@@ -154,7 +154,6 @@ function Navbar() {
           </Box>
           <Button
             sx={{
-              color: 'grey',
               mx: '10px',
               textTransform: 'none',
               borderRadius: '20px',
@@ -170,7 +169,9 @@ function Navbar() {
               display: { xs: 'none', sm: 'none', md: 'inline-block' }
             }}
           >
+            <Link to="/quora/premium" style={{textDecoration:'none', color:'gray'}}>
             Try Quora+
+            </Link>
           </Button>
 
           <Tooltip title="Open settings">

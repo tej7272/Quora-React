@@ -70,7 +70,7 @@ const Sidebarleft = () => {
         <Popup open={showCreateSpace} setOpen={setShowCreateSpace}>
           <CreateSpace />
         </Popup>
-        <Link to="/quora/topic/sport" style={{ textDecoration: 'none', }}>
+        <Link to="/quora/topic/sport" style={{ textDecoration: 'none',  color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{
             ...boxStyles,
             ':hover': {
@@ -89,7 +89,7 @@ const Sidebarleft = () => {
         </Link>
 
 
-        <Link to="/quora/topic/technology" style={{ textDecoration: 'none', }}>
+        <Link to="/quora/topic/technology" style={{ textDecoration: 'none', color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{
             ...boxStyles,
             ':hover': {
@@ -103,11 +103,11 @@ const Sidebarleft = () => {
               alt="Psychology"
               sx={CardMediaStyles}
             />
-            <Typography variant="h6" fontSize='12px'>Technology</Typography>
+            <Typography variant="h6" fontSize='small'>Technology</Typography>
           </Box>
         </Link>
 
-        <Link to="/quora/topic/health" style={{ textDecoration: 'none', }}>
+        <Link to="/quora/topic/health" style={{ textDecoration: 'none', color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{
             ...boxStyles,
             ':hover': {
@@ -125,7 +125,7 @@ const Sidebarleft = () => {
           </Box>
         </Link>
 
-        <Link to="/quora/topic/business" style={{ textDecoration: 'none', }}>
+        <Link to="/quora/topic/business" style={{ textDecoration: 'none', color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{
             ...boxStyles,
             ':hover': {
@@ -143,7 +143,7 @@ const Sidebarleft = () => {
           </Box>
         </Link>
 
-        <Link to="/quora/topic/entertainment" style={{ textDecoration: 'none', }}>
+        <Link to="/quora/topic/entertainment" style={{ textDecoration: 'none', color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{
             ...boxStyles,
             ':hover': {
@@ -161,7 +161,7 @@ const Sidebarleft = () => {
           </Box>
         </Link>
 
-        <Link to="/quora/topic/world" style={{ textDecoration: 'none', }}>
+        <Link to="/quora/topic/world" style={{ textDecoration: 'none', color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{
             ...boxStyles,
             ':hover': {
@@ -180,7 +180,7 @@ const Sidebarleft = () => {
         </Link>
 
 
-        <Link to="/quora/topic/science" style={{ textDecoration: 'none', }}>
+        <Link to="/quora/topic/science" style={{ textDecoration: 'none', color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{
             ...boxStyles,
             ':hover': {

@@ -15,6 +15,7 @@ import Drafts from '../components/pages/answer/Drafts'
 import Requests from '../components/pages/answer/Requests'
 import Spaces from '../components/pages/spaces/Spaces'
 import Topic from '../components/pages/topics/Topic'
+import Premium from '../components/navbar/Premium'
 
 export const DarkMode = createContext();
 export const SearchContext = createContext();
@@ -141,6 +142,15 @@ const Quora = () => {
                     <Sidebarleft />
                     <Topic />
                     <Advertisingsection />
+                  </div>
+                }
+              />
+
+              <Route
+                path="/premium"
+                element={
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Premium />
                   </div>
                 }
               />
