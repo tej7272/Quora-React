@@ -1,24 +1,24 @@
-import { Avatar, Box, Button, ButtonGroup, Card, CardActions, CardContent, CardHeader, CardMedia, Tooltip, Typography } from '@mui/material'
+import { Avatar, Box, Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material'
 import { red } from '@mui/material/colors'
 import React from 'react';
 import { useContext } from 'react';
 import { DarkMode } from '../../../quora/Quora';
 
-const buttonStyles = {
-  color: 'gray',
-  border: 'none',
-  outline: 'none',
-  textTransform: 'none',
-  borderRadius: '25px',
-  fontSize: '13px',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  height: '33px',
-  ':hover': {
-    border: 0,
-  }
-}
+// const buttonStyles = {
+//   color: 'gray',
+//   border: 'none',
+//   outline: 'none',
+//   textTransform: 'none',
+//   borderRadius: '25px',
+//   fontSize: '13px',
+//   whiteSpace: 'nowrap',
+//   overflow: 'hidden',
+//   textOverflow: 'ellipsis',
+//   height: '33px',
+//   ':hover': {
+//     border: 0,
+//   }
+// }
 
 const TopicData = (props) => {
 
