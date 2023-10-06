@@ -57,7 +57,7 @@ const Setting = () => {
 
       <Box sx={{ p: '20px', borderBottom: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`, mt: '10px' }}>
         <Avatar src={user?.name}
-          alt={user?.name.toUpperCase()} sx={{ width: '35px', height: '35px', color:'black' }}/>
+          alt={user?.name?.toUpperCase()} sx={{ width: '35px', height: '35px', color:'black' }}/>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: '10px' }}>
           <Typography variant='h6' sx={{ fontWeight: '650', color: `${darkMode ? '#d5d1d1' : 'black'}`, }}>{user.name}</Typography>
           <KeyboardArrowRightIcon sx={{ color: `${darkMode ? '#d5d1d1' : 'black'}`, }} />
