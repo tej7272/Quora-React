@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
 export const signUpUser = createAsyncThunk('signupuser', async (userData) => {
-  try{
     const response = await fetch('https://academics.newtonschool.co/api/v1/user/signup', {
         method: 'POST',
         headers: {
@@ -14,23 +13,21 @@ export const signUpUser = createAsyncThunk('signupuser', async (userData) => {
 
     if (response.ok) {
       const data = await response.json();
-      localStorage.setItem('user', JSON.stringify(data));
+      const userSignupData = {
+        token : data.token,
+        name : data.data.user.name,
+        email : data.data.user.email
+      }
+      localStorage.setItem('user', JSON.stringify(userSignupData));
       return await data;
     } 
     else {
-      throw new Error('Failed to Signup');
+      throw new Error('User already exists');
     }
-
-  }catch(error){
-    throw new Error('User already exists');
-    
-  }
 })
 
 
-export const loginUser = createAsyncThunk('user/loginuser', 
-async (Credentials) => {
-  try{
+export const loginUser = createAsyncThunk('user/loginuser', async (Credentials) => {
     const response = await fetch('https://academics.newtonschool.co/api/v1/user/login', {
         method: 'POST',
         headers: {
@@ -42,20 +39,22 @@ async (Credentials) => {
 
     if (response.ok) {
       const data = await response.json();
-      localStorage.setItem('user', JSON.stringify(data));
+      const userLoginData = {
+        token : data.token,
+        name : data.data.name,
+        email : data.data.email
+      }
+      localStorage.setItem('user', JSON.stringify(userLoginData));
       return await data;
     } 
     else {
-      throw new Error('Failed to login');
+      throw new Error('Incorrect EmailId or Password');
     }
-  } catch (error) {
-    throw new Error('Incorrect EmailId or Password');
-  }
+  
 })
 
 export const ForgotPassword = createAsyncThunk('forgetpassword', 
 async (userCredentials) => {
-  try{
     const response = await fetch('https://academics.newtonschool.co/api/v1/user/updateMyPassword', {
         method: 'PATCH',
         headers: {
@@ -67,15 +66,12 @@ async (userCredentials) => {
 
     if (response.ok) {
       const data = await response.json();
-      localStorage.setItem('user', JSON.stringify(data));
+      console.log("forgot password", data)
       return await data;
     } 
     else {
       throw new Error('Failed to ForgotPassword');
     }
-  } catch (error) {
-    throw new Error('An error occurred during forgetting password');
-  }
 })
 
 

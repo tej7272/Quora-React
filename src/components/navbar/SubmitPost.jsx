@@ -3,6 +3,8 @@ import PhotoLibraryOutlinedIcon from '@mui/icons-material/PhotoLibraryOutlined';
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import { DarkMode } from '../../quora/Quora';
+import { useDispatch } from 'react-redux';
+import { createPost } from '../../services/postSlice';
 
 const buttonStyles = {
   width: '50%',
@@ -46,17 +48,28 @@ const buttonContainerStyles = {
 const SubmitPost = () => {
 
   const [addQuestion, setAddQuestion] = useState(true);
-  const [createPost, setCreatePost] = useState(false);
+  const [inputValue, setInputValue] = useState({title:'', postContent:'', postImage:null})
+  const [createPosts, setCreatePosts] = useState(false);
   const { darkMode } = useContext(DarkMode);
 
+  const dispatch = useDispatch();
+
+
+  const handleAddQuestion = (e) => {
+    e.preventDefault();
+
+    dispatch(createPost(inputValue))
+
+    
+  }
   const handleAddButton = () => {
     setAddQuestion(true);
-    setCreatePost(false);
+    setCreatePosts(false);
   }
 
   const handleCreatePostButton = () => {
     setAddQuestion(false);
-    setCreatePost(true);
+    setCreatePosts(true);
   }
 
   return (
@@ -82,19 +95,21 @@ const SubmitPost = () => {
                 backgroundColor: `${darkMode ? '#272727' : ''}`,
                 color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`
               }}
+              value={inputValue.title}
+              onChange={(e) => setInputValue({ ...inputValue, title: e.target.value })}
 
               placeholder={`Start your question with "What", "How", "Why" etc.`}
             />
 
           </Box>
           <Box sx={buttonContainerStyles}>
-            <Button sx={submitButtonStyles}>Add Question</Button>
+            <Button sx={submitButtonStyles} onClick={handleAddQuestion}>Add Question</Button>
           </Box>
         </Box>
       </Box>
       }
 
-      {createPost && <Box sx={{ py: '10px' }}>
+      {createPosts && <Box sx={{ py: '10px' }}>
         <Box>
 
           <textarea
@@ -104,15 +119,18 @@ const SubmitPost = () => {
               color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`
             }}
             placeholder="Start typing here"
+            value={inputValue.postContent}
+            onChange={(e) => setInputValue({ ...inputValue, postContent: e.target.value })}
           />
+          <input type='text' placeholder='title' value={inputValue.title} onChange={(e) => setInputValue({ ...inputValue, title: e.target.value })}/>
 
 
         </Box>
         <Box sx={buttonContainerStyles}>
           <Button component="label" startIcon={<PhotoLibraryOutlinedIcon />} >
-            <input type="file" />
+            <input type="file" onChange={(e) => setInputValue({ ...inputValue, postImage: e.target.files[0] })}/>
           </Button>
-          <Button variant="contained" sx={submitButtonStyles}>Post</Button>
+          <Button variant="contained" sx={submitButtonStyles} onClick={handleAddQuestion}>Post</Button>
 
         </Box>
       </Box>

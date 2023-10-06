@@ -176,7 +176,7 @@ function Navbar() {
 
           <Tooltip title="Open settings">
             <IconButton onClick={handleSettingModal} sx={{ p: 0, }}>
-              <Avatar alt={user?.data?.name}  src={user?.data?.name} sx={{ width: '35px', height: '35px', color:'black' }} />
+              <Avatar alt={user?.name.toUpperCase()}  src={user?.name} sx={{ width: '35px', height: '35px', color:'black' }} />
             </IconButton>
           </Tooltip>
           <Modal open={openSettingModal} onClose={() => setOpenSettingModal(false)} sx={{ top: '50px', left: '60%' }}>

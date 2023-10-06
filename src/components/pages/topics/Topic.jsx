@@ -61,8 +61,6 @@ const Topic = () => {
             })
             .then((data) => {
                 setPostList(data.news);
-                console.log("data", data);
-                console.log("current topic", topics)
                 setIsLoading(false);
             })
             .catch((err) => {
