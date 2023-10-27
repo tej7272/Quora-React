@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useCommentQuery } from '../../../services/authApi';
+import React, { useState } from 'react'
 import { Avatar, Box, Button, ButtonGroup, Card, CardActions, CardContent, CardHeader, Tooltip, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
@@ -8,6 +7,11 @@ import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import HomeDataComments from '../home/HomeDataComments';
 import { useContext } from 'react';
 import { DarkMode } from '../../../quora/Quora';
+import { useCommentQuery } from '../../../services/productApi';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { addLikeCount, deleteLikeCount } from '../../../services/likeSlice';
+import { addComments } from '../../../services/commentSlice';
 
 
 const buttonStyles = {
@@ -29,85 +33,39 @@ const buttonStyles = {
 const FollowingData = (props) => {
 
   const { author, channel, title, content, commentCount, likeCount, _id } = props;
-  const {darkMode} = useContext(DarkMode);
-
+  const { darkMode } = useContext(DarkMode);
 
   const [like, setLike] = useState(likeCount);
   const [showComments, setShowComments] = useState(false);
-  const [commentsList, setCommentsList] = useState([]);
   const [colorUp, setColorUp] = useState("#4242ca");
   const [colorDown, setColorDown] = useState("gray")
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [commentValue, setCommentValue] = useState("");
+
 
   const postId = _id;
-  const getCommentsData = useCommentQuery(postId);
+  const { data: getCommentsData, refetch, isLoading } = useCommentQuery(postId);
 
-
-  const addLikeCount = async (postId) => {
-    try {
-      const res = await fetch(`https://academics.newtonschool.co/api/v1/quora/like/${postId}`,
-        {
-          method: "POST",
-          body: {
-            postId: `${postId}`,
-          },
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-            projectId: `bc73q6nn4srr`,
-          }
-        })
-      const data = await res.json();
-      if (data.status === "success") {
-        setLike((prevState) => prevState + 1);
-        setColorUp("#ff4500");
-        setColorDown("gray");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const deleteLikeCount = async (postId) => {
-    try {
-      const res = await fetch(`https://academics.newtonschool.co/api/v1/quora/like/${postId}`,
-        {
-          method: "DELETE",
-          body: {
-            postId: `${postId}`,
-          },
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-            projectId: `bc73q6nn4srr`,
-          }
-        })
-      const data = await res.json();
-      if (data.status === "success") {
-        setLike((prevState) => prevState - 1);
-        setColorUp("#4242ca");
-        setColorDown("#ff4500");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const dispatch = useDispatch();
 
 
   const onClickUpvote = async () => {
-    addLikeCount(postId);
-  }
-  const onClickDownVote = () => {
-    deleteLikeCount(postId);
-  }
-
-  useEffect(() => {
-    if (!getCommentsData.isLoading) {
-
-      if (getCommentsData?.data?.data) {
-        setCommentsList(getCommentsData.data.data);
-      }
-
+    const likeResult = await dispatch(addLikeCount(postId));
+    if (likeResult.payload) {
+      setLike((prevState) => prevState + 1);
+      setColorUp("#ff4500")
+      setColorDown("gray")
     }
-  }, [getCommentsData, commentsList]);
+  }
+  const onClickDownVote = async () => {
+    const deleteResult = await dispatch(deleteLikeCount(postId));
+    if (deleteResult.payload) {
+      setLike((prevState) => prevState - 1);
+      setColorUp("#4242ca");
+      setColorDown("#ff4500")
+    }
+  }
+
+
 
 
   const handleShowComments = () => {
@@ -116,6 +74,19 @@ const FollowingData = (props) => {
     }
     else {
       setShowComments(false);
+    }
+  }
+
+  const handleAddComments = async (e) => {
+    e.preventDefault();
+    if (commentValue.trim() !== '') {
+
+      const result = await dispatch(addComments({ postId, commentValue }));
+      if (result.payload) {
+        toast.success(result.payload.message);
+        setCommentValue('');
+        await refetch();
+      }
     }
   }
 
@@ -134,21 +105,21 @@ const FollowingData = (props) => {
             </Avatar>
           }
           title={<Typography sx={{ fontSize: '13px', fontWeight: '600' }}>{channel.name}</Typography>}
-          subheader={<p style={{ fontSize: '13px', fontWeight: '400', margin: 0, color:`${darkMode?'#b8b4b4':''}` }}>Posted by <span style={{ fontWeight: '800', color:`${darkMode?'#b8b4b4':''}` }}>{author.name}</span></p>}
+          subheader={<p style={{ fontSize: '13px', fontWeight: '400', margin: 0, color: `${darkMode ? '#b8b4b4' : ''}` }}>Posted by <span style={{ fontWeight: '800', color: `${darkMode ? '#b8b4b4' : ''}` }}>{author.name}</span></p>}
         />
         <CardContent>
           <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', mb: '20px' }}>{title}</Typography>
-          <Typography variant="p" color="text.secondary" sx={{ fontSize: '14px', color:`${darkMode?'#b8b4b4':'#4d4c4c'}`}}>{content}</Typography>
+          <Typography variant="p" color="text.secondary" sx={{ fontSize: '14px', color: `${darkMode ? '#b8b4b4' : '#4d4c4c'}` }}>{content}</Typography>
         </CardContent>
 
         <CardActions sx={{ height: '45px' }}>
           <ButtonGroup variant="text" color='secondary' >
-            <Button variant="text" sx={{...buttonStyles, backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#555454':'#ece9e9'}`}}} onClick={onClickUpvote} >
+            <Button variant="text" sx={{ ...buttonStyles, backgroundColor: `${darkMode ? '#3d3b3b' : '#ece9e9'}`, ':hover': { backgroundColor: `${darkMode ? '#555454' : '#ece9e9'}` } }} onClick={onClickUpvote} >
               <ThumbUpOutlinedIcon fontSize='small' sx={{ color: `${colorUp}`, mr: '3px' }} />{`Upvote .${like}`}
             </Button>
             <Tooltip title="Downvote">
-              <Button variant="text" sx={{...buttonStyles, backgroundColor:`${darkMode?'#3d3b3b':'#ece9e9'}`, ':hover':{backgroundColor:`${darkMode?'#555454':'#ece9e9'}`}}} onClick={onClickDownVote} >
-                <ThumbDownOutlinedIcon fontSize='small' sx={{color:`${colorDown}`}}/>
+              <Button variant="text" sx={{ ...buttonStyles, backgroundColor: `${darkMode ? '#3d3b3b' : '#ece9e9'}`, ':hover': { backgroundColor: `${darkMode ? '#555454' : '#ece9e9'}` } }} onClick={onClickDownVote} >
+                <ThumbDownOutlinedIcon fontSize='small' sx={{ color: `${colorDown}` }} />
               </Button>
             </Tooltip>
           </ButtonGroup>
@@ -158,13 +129,12 @@ const FollowingData = (props) => {
 
         </CardActions>
         {showComments && <Box sx={{ px: '10px' }}>
-          {getCommentsData.isLoading ? <div>loading...</div> :
-            (commentsList.length && commentsList.map((comments, index) => {
-              return (
-                <HomeDataComments key={index} {...comments} />
-
-              )
-            }))}
+          <form>
+            <input placeholder="Add a reply..." type="text" value={commentValue} onChange={(e) => setCommentValue(e.target.value)} className="comment-input" />
+            <button className="comment-btn" onClick={handleAddComments}>Add Comments</button>
+          </form>
+          {isLoading ? <div>loading...</div> :
+            (getCommentsData?.data?.map((comments, index) => (<HomeDataComments key={index} {...comments} />)))}
 
         </Box>}
       </Card>

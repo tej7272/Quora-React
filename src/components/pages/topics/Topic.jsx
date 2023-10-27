@@ -114,6 +114,8 @@ const Topic = () => {
         <Box
             sx={{
                 px: 1,
+                height:'92vh',
+                overflowY:'scroll',
                 '@media (min-width: 300px)': {
                     width: '100%'
                 },

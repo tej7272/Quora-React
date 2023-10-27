@@ -34,7 +34,7 @@ const AddQuestion = () => {
         sx={{
           p: 1,
           width: '100%',
-          minWidth: '430px',
+          minWidth: '350px',
           boxShadow: '0px 0px 3px 0px rgba(0,0,0,0.2)',
           background: `${darkMode ? '#292929' : ''}`,
           color: `${darkMode ? '#b8b4b4' : ''}`

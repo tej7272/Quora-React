@@ -30,7 +30,7 @@ const Answerleftbar = () => {
     <Box
 
       sx={{
-        width: '123.5px',
+        width: '150.5px',
         mt: '10px',
         px: 1,
         height: '100vh',
@@ -43,9 +43,10 @@ const Answerleftbar = () => {
         }
       }}
     >
-      <Box sx={{ position: 'fixed', }}>
+      <Box sx={{width:'100%' }}>
         <Box sx={{
           px: '10px',
+          width:'100%'
 
         }}>
           <Typography variant='h6' fontSize='15px' sx={{ fontWeight: '150', opacity: '0.9' }}>Questions</Typography>

@@ -5,3 +5,31 @@ body{
     background-color: #eae9e9;
     height:'100%'
 }
+
+*{
+    scrollbar-width: none;
+}
+
+.comment-input{
+    width:70%;
+    margin: 0 10px;
+    border-radius: 15px;
+    background: transparent;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 15px;
+    border: 1px solid rgb(220, 219, 219);
+    color:gray
+
+}
+
+.comment-btn{
+    padding: 8px 15px;
+    border-radius: 20px;
+    border:1px solid rgb(228, 226, 226);
+    background: #496df1;
+    color:#fff;
+    border:1px solid rgb(220, 219, 219);
+    font-size:12px;
+    cursor: pointer;
+}

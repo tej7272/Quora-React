@@ -26,6 +26,8 @@ const Answer = () => {
         borderRadius: '4px',
         backgroundColor: `${darkMode?'#292929':'white'}`,
         mt: '10px',
+        height:'92vh',
+        overflowY:'scroll',
         '@media (min-width: 500px)': {
           mx:'10px',
           width:'500px'

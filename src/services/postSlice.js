@@ -14,7 +14,7 @@ export const createPost = createAsyncThunk('createpost', async (inputValue) => {
     method: 'POST',
     headers: {
       'projectId': 'bc73q6nn4srr',
-      'Authorization': `Bearer ${user?.token}`
+      Authorization: `Bearer ${user?.token}`
     },
     body: formData
   });

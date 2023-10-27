@@ -40,7 +40,6 @@ const Homepage = () => {
       })
       .then((data)=>{
           setPostList((prev)=> [...prev, ...data.data]);
-          console.log("data", data);
           setIsLoading(false);
       })
       .catch((err)=>{
@@ -77,6 +76,8 @@ const Homepage = () => {
     <Box
       sx={{
         px: 1,
+        height:'92vh',
+        overflowY:'scroll',
         '@media (min-width: 300px)': {
           width:'100%'
         },

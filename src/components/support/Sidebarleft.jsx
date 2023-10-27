@@ -49,9 +49,9 @@ const Sidebarleft = () => {
       }}
     >
       <Box
-        sx={{
-          position: 'fixed',
-        }}
+        // sx={{
+        //   position: 'fixed',
+        // }}
       >
         <Box
           sx={{
