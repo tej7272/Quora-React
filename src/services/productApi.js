@@ -8,18 +8,27 @@ const productsHeader = {
     Authorization: `Bearer ${user?.token}`
 }
 
+// const myParams = {
+//     limit:100,
+// }
+
 const baseUrl = 'https://academics.newtonschool.co/api/v1';
 
 const createRequest = (url) => ({ url, headers: productsHeader });
+
+// const createRequestData = (url) => ({ url, headers: productsHeader, params: myParams });
 
 export const productApi = createApi({
     reducerPath: "productApi",
     baseQuery: fetchBaseQuery({ baseUrl }),
     endpoints: (builder) => ({
+        getPostData: builder.query({
+            query: () => createRequest(`/quora/post?limit=100`)
+        }),
         Comment: builder.query({
             query: (postId) => createRequest(`/quora/post/${postId}/comments`)
         }),
     })
 })
 
-export const { useCommentQuery } = productApi;
+export const { useCommentQuery, useGetPostDataQuery } = productApi;

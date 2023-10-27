@@ -66,8 +66,6 @@ const FollowingData = (props) => {
   }
 
 
-
-
   const handleShowComments = () => {
     if (showComments === false) {
       setShowComments(true);
