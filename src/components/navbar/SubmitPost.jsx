@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { DarkMode } from '../../quora/Quora';
 import { useDispatch } from 'react-redux';
 import { createPost } from '../../services/postSlice';
+import { toast } from 'react-toastify';
 
 const buttonStyles = {
   width: '50%',
@@ -34,7 +35,7 @@ const textareaStyles = {
   outline: 'none',
   resize: 'none',
   width: '100%',
-  height: '130px',
+  height: '100px',
 }
 
 const buttonContainerStyles = {
@@ -48,20 +49,56 @@ const buttonContainerStyles = {
 const SubmitPost = () => {
 
   const [addQuestion, setAddQuestion] = useState(true);
-  const [inputValue, setInputValue] = useState({title:'', postContent:'', postImage:null})
+  const [title ,setTitle] = useState('');
+  const [content ,setContent] = useState('');
+  const [image ,setImage] = useState('');
   const [createPosts, setCreatePosts] = useState(false);
   const { darkMode } = useContext(DarkMode);
 
   const dispatch = useDispatch();
 
 
+
+  const handleCreatePost = (e) => {
+    e.preventDefault();
+
+    let inputValue = {
+      title,
+      content,
+      image
+    }
+    dispatch(createPost(inputValue))
+    .then((result)=>{
+      if(result.payload){
+        toast.success(result.payload.message);
+      }
+      else{
+        toast.error(result.error.message);
+      }
+    })
+  }
+
+  
   const handleAddQuestion = (e) => {
     e.preventDefault();
 
+    let inputValue = {
+      title,
+      content,
+      image
+    }
     dispatch(createPost(inputValue))
-
-    
+    .then((result)=>{
+      if(result.payload){
+        toast.success(result.payload.message);
+      }
+      else{
+        toast.error(result.error.message);
+      }
+    })
   }
+
+
   const handleAddButton = () => {
     setAddQuestion(true);
     setCreatePosts(false);
@@ -95,8 +132,8 @@ const SubmitPost = () => {
                 backgroundColor: `${darkMode ? '#272727' : ''}`,
                 color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`
               }}
-              value={inputValue.title}
-              onChange={(e) => setInputValue({ ...inputValue, title: e.target.value })}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
 
               placeholder={`Start your question with "What", "How", "Why" etc.`}
             />
@@ -112,6 +149,13 @@ const SubmitPost = () => {
       {createPosts && <Box sx={{ py: '10px' }}>
         <Box>
 
+          <input type='text'
+            placeholder='Enter title here'
+            value={title}
+            onChange={(e) => setTitle(e.target.value )}
+            style={{ width: '100%', padding: '10px 0', border: 0, outline: 0, marginBottom: '10px', fontSize: '17px', backgroundColor: 'transparent', color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`, letterSpacing: '2px' }}
+          />
+
           <textarea
             style={{
               ...textareaStyles,
@@ -119,18 +163,18 @@ const SubmitPost = () => {
               color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`
             }}
             placeholder="Start typing here"
-            value={inputValue.postContent}
-            onChange={(e) => setInputValue({ ...inputValue, postContent: e.target.value })}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
           />
-          <input type='text' placeholder='title' value={inputValue.title} onChange={(e) => setInputValue({ ...inputValue, title: e.target.value })}/>
 
+          <img src={image} alt='uplaod' style={{ maxWidth: '100%', maxHeight: '200px'}}/>
 
         </Box>
         <Box sx={buttonContainerStyles}>
           <Button component="label" startIcon={<PhotoLibraryOutlinedIcon />} >
-            <input type="file" onChange={(e) => setInputValue({ ...inputValue, postImage: e.target.files[0] })}/>
+            <input type="file" onChange={(e) => setImage(e.target.files[0])} />
           </Button>
-          <Button variant="contained" sx={submitButtonStyles} onClick={handleAddQuestion}>Post</Button>
+          <Button variant="contained" sx={submitButtonStyles} onClick={handleCreatePost}>Post</Button>
 
         </Box>
       </Box>

@@ -13,7 +13,7 @@ import PrivateRoute from './quora/PrivateRoute';
 function App() {
   return (
     <Box>
-      <ToastContainer style={{ left:'40%'}}/>
+      <ToastContainer position="top-center"/>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />

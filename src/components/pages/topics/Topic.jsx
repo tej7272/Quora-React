@@ -1,6 +1,13 @@
 import { Box, Button, Card, CardMedia, Typography } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import Poison from '../../../images/Poison.jpg'
+import Movie from '../../../images/movies.jpg'
+import Sport from '../../../images/history.jpg';
+import Technology from '../../../images/psychology.jpg';
+import Health from '../../../images/books.jpg';
+import Business from '../../../images/business.jpg';
+import World from '../../../images/music.jpg';
+import Science from '../../../images/history.jpg';
 import TopicData from './TopicData';
 import { DarkMode } from '../../../quora/Quora';
 import { useParams } from 'react-router-dom';
@@ -8,23 +15,23 @@ import { useParams } from 'react-router-dom';
 
 const Topic = () => {
 
-    const [content, setContent] = useState("Following 139.1M");
+    const [content, setContent] = useState("Following ");
     const [textColor, setTextColor] = useState('gray');
     const [color, setColor] = useState("#e6dada");
-    const [postList, setPostList] = useState([]);
+    const [postList, setPostList] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const { darkMode } = useContext(DarkMode);
     const { topics } = useParams();
 
 
     const handleClick = () => {
-        if (content === "Following 139.1M") {
-            setContent("Follow 139.1M");
+        if (content === "Following ") {
+            setContent("Follow ");
             setColor("");
             setTextColor("");
         }
         else {
-            setContent("Following 139.1M");
+            setContent("Following ");
             setColor("#e6dada");
             setTextColor("gray");
         }
@@ -32,27 +39,11 @@ const Topic = () => {
 
     useEffect(() => {
         setIsLoading(true);
-    
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-RapidAPI-Key': 'ce9d1cc48amsh72b0f047a0f9e48p155164jsnab2bdb174cf0',
-                'X-RapidAPI-Host': 'newsnow.p.rapidapi.com',
-            },
-            body: JSON.stringify({
-                query: 'AI',
-                page: 1,
-                time_bounded: true,
-                from_date: '01/02/2021',
-                to_date: '05/06/2021',
-                location: '',
-                category: '',
-                source: topics,
-            }),
-        };
-    
-        fetch('https://newsnow.p.rapidapi.com/newsv2', requestOptions)
+
+        const API_KEY = "ea3bb3a33db10a8b7cc968ab6773b57e"
+        let url = `https://gnews.io/api/v4/top-headlines?category=${topics}&apikey=${API_KEY}&lang=en`;
+
+        fetch(url)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`Network response was not ok: ${res.status}`);
@@ -60,7 +51,7 @@ const Topic = () => {
                 return res.json();
             })
             .then((data) => {
-                setPostList(data.news);
+                setPostList(data.articles);
                 setIsLoading(false);
             })
             .catch((err) => {
@@ -70,65 +61,51 @@ const Topic = () => {
         // eslint-disable-next-line
     }, [topics]);
 
+
     let textContent;
+    let image;
+    let following;
     switch (topics) {
         case 'sport':
-            textContent = (
-                <>
-                    Sports
-                </>
-            );
+            textContent = "Sports";
+            image = Sport;
+            following = "93.13M";
             break;
         case 'technology':
-            textContent = (
-                <>
-                    Technology
-                </>
-            );
+            textContent =  "Technology";
+            image = Technology;
+            following = "193M";
             break;
         case 'health':
-            textContent = (
-                <>
-                    Health
-                </>
-            );
+            textContent = "Health";
+            image = Health;
+            following = "83.74M";
             break;
         case 'business':
-            textContent = (
-                <>
-                    Business
-                </>
-            );
+            textContent = "Business";
+            image = Business;
+            following = "113M";
             break;
         case 'entertainment':
-            textContent = (
-                <>
-                    Entertainment
-                </>
-            );
+            textContent = "Entertainment" 
+            image = (Movie)
             break;
         case 'world':
-            textContent = (
-                <>
-                    World
-                </>
-            );
+            textContent = "World"
+            image = World;
+            following = "323.56M";
             break;
 
         case 'science':
-            textContent = (
-                <>
-                    Science
-                </>
-            );
+            textContent =  "Science";
+            image = Science;
+            following = "191M";
             break;
 
         default:
-            textContent = (
-                <>
-                    Notifications
-                </>
-            );
+            textContent =  "Notifications";
+             image = Poison;
+             following = "13.3M";
             break;
     }
 
@@ -165,7 +142,7 @@ const Topic = () => {
                         <Box sx={{ p: 1, mr: 1 }}>
                             <CardMedia component='img'
                                 alt="image"
-                                src={Poison}
+                                src={image}
                                 height='85px'
                                 sx={{ width: '85px', borderRadius: '4px' }}
                             />
@@ -175,14 +152,14 @@ const Topic = () => {
                             <Typography variant='h6' sx={{ fontWeight: '600', }} >{textContent}</Typography>
                             <Button sx={{ textTransform: 'inherit', borderRadius: '20px', color: `${textColor}`, border: `1px solid ${color}`, mt: '8px', fontSize: '13px', p: '0px 10px', }}
                                 onClick={handleClick}
-                            >{content}</Button>
+                            >{content}{following}</Button>
                         </Box>
 
                     </Box>
                 </Card>
             </Box>
             {isLoading ? (
-                <div style={{marginTop:'20px'}}>loading...</div>
+                <div style={{ marginTop: '20px' }}>loading...</div>
             ) : (
 
                 postList?.map((post, index) => {

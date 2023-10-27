@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Box, Button, Switch, Typography } from '@mui/material'
+import { Avatar, Box, Button, Modal, Switch, Typography } from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,9 @@ const iconStyles = {
   mr: '5px'
 }
 
-const Setting = () => {
+const Setting = (props) => {
+
+  const {open, setOpen} = props;
 
   const user = JSON.parse(localStorage.getItem('user'));
   const { darkMode, setDarkMode } = useContext(DarkMode);
@@ -47,6 +49,7 @@ const Setting = () => {
   }
 
   return (
+    <Modal sx={{ top: '50px', left: '60%' }} open={open} onClose={() => setOpen(false)}>
     <Box
       sx={{
         border: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`,
@@ -82,6 +85,7 @@ const Setting = () => {
         </Box>
       </Box>
     </Box>
+    </Modal>
   )
 }
 

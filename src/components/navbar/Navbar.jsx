@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, IconButton, Avatar, Button, ButtonGroup, Tooltip, CardMedia, InputBase, Modal, } from '@mui/material';
+import { Box, IconButton, Avatar, Button, ButtonGroup, Tooltip, CardMedia, InputBase } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
@@ -9,7 +9,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Quoralogo from '../../images/Quora_Logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Setting from './Setting';
 import SubmitPost from './SubmitPost';
 import Popup from '../controls/Popup'
@@ -38,6 +38,7 @@ function Navbar() {
   const user = JSON.parse(localStorage.getItem('user'));
 
   const { darkMode } = useContext(DarkMode);
+  const navigate = useNavigate();
 
   const handleSettingModal = () => {
     if (openSettingModal === true) {
@@ -46,6 +47,11 @@ function Navbar() {
     else {
       setOpenSettingModal(true)
     }
+  }
+
+  const handleSearchSubmit = (e)=>{
+    e.preventDefault();
+    navigate('/quora/');
   }
 
   return (
@@ -144,13 +150,16 @@ function Navbar() {
             }}>
 
             <SearchIcon sx={{ color: 'grey', mr: '5px' }} fontSize="small" />
-            <InputBase
-              placeholder="Search…"
-              sx={{ fontSize: '15px', width: '240px', color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`, flexGrow: 1 }}
-              type='text'
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <form onSubmit={handleSearchSubmit}>
+              <InputBase
+                placeholder="Search…"
+                sx={{ fontSize: '15px', width: '240px', color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`, flexGrow: 1 }}
+                type='text'
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onClick={(e)=>setSearchTerm('')}
+              />
+            </form>
           </Box>
           <Button
             sx={{
@@ -169,19 +178,19 @@ function Navbar() {
               display: { xs: 'none', sm: 'none', md: 'inline-block' }
             }}
           >
-            <Link to="/quora/premium" style={{textDecoration:'none', color:'gray'}}>
-            Try Quora+
+            <Link to="/quora/premium" style={{ textDecoration: 'none', color: 'gray' }}>
+              Try Quora+
             </Link>
           </Button>
 
           <Tooltip title="Open settings">
             <IconButton onClick={handleSettingModal} sx={{ p: 0, }}>
-              <Avatar alt={user?.name?.toUpperCase()}  src={user?.name} sx={{ width: '35px', height: '35px', color:'black' }} />
+              <Avatar alt={user?.name?.toUpperCase()} src={user?.name} sx={{ width: '35px', height: '35px', color: 'black' }} />
             </IconButton>
           </Tooltip>
-          <Modal open={openSettingModal} onClose={() => setOpenSettingModal(false)} sx={{ top: '50px', left: '60%' }}>
-            <Setting />
-          </Modal>
+          {/* <Modal open={openSettingModal} onClose={() => setOpenSettingModal(false)} > */}
+            <Setting open={openSettingModal} setOpen={setOpenSettingModal}/>
+          {/* </Modal> */}
 
           <Button>
             <LanguageOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />

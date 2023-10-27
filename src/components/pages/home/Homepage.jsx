@@ -40,6 +40,7 @@ const Homepage = () => {
       })
       .then((data)=>{
           setPostList((prev)=> [...prev, ...data.data]);
+          console.log("data", data);
           setIsLoading(false);
       })
       .catch((err)=>{
