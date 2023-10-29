@@ -45,6 +45,7 @@ body {
     background: transparent;
     border: none;
     margin: 0 6px;
+    cursor: pointer;
 }
 
 .nav-icons:focus {
