@@ -45,6 +45,8 @@ const HomeData = (props) => {
 
   const { data: getCommentsData, refetch, isLoading } = useCommentQuery(postId);
 
+  console.log("get comment", getCommentsData);
+
   const onClickUpvote = async () => {
 
     const likeResult = await dispatch(addLikeCount(postId));

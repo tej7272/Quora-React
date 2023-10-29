@@ -60,8 +60,7 @@ const Homepage = () => {
       {isLoading ? (
         <div>loading...</div>
       ) : (
-        filteredPostList.length &&
-        filteredPostList.map((post, index) => {
+        filteredPostList?.map((post, index) => {
           return <HomeData key={index} {...post} />;
         })
       )}

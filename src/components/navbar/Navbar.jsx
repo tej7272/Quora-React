@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
-import { Box, IconButton, Avatar, Button, ButtonGroup, Tooltip, CardMedia, InputBase } from '@mui/material';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
-import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
-import DrawOutlinedIcon from '@mui/icons-material/DrawOutlined';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import { Box, IconButton, Avatar, Button, Tooltip, CardMedia, } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Quoralogo from '../../images/Quora_Logo.png'
 import { Link, useNavigate } from 'react-router-dom';
 import Setting from './Setting';
@@ -15,6 +8,12 @@ import SubmitPost from './SubmitPost';
 import Popup from '../controls/Popup'
 import '../../App.css'
 import { useContext } from 'react';
+import {GoHome} from 'react-icons/go';
+import {SlNote } from 'react-icons/sl';
+import {CiViewList} from 'react-icons/ci';
+import {IoPeopleOutline} from 'react-icons/io5';
+import {IoNotificationsOutline} from 'react-icons/io5'
+import {IoMdArrowDropdown} from 'react-icons/io'
 import { DarkMode, SearchContext } from '../../quora/Quora';
 
 
@@ -26,7 +25,8 @@ const buttonStyles = {
   borderRadius: '25px',
   fontSize: '14px',
   height: '32px',
-  outline: 'none'
+  outline: 'none',
+  overflow:'hidden',
 }
 
 
@@ -58,16 +58,11 @@ function Navbar() {
 
     <Box position="fixed" sx={{ boxShadow: '0', border: `1px solid ${darkMode ? '#292929' : '#d7d5d5'}`, width: '100%', zIndex: '3000' }}  >
       <Box sx={{ backgroundColor: `${darkMode ? '#292929' : 'white'}`, py: '0.18rem', }}>
-        <Box
-          sx={{
-            display: 'flex',
-            color: 'black',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '1110px',
-            mx: 'auto'
-          }}>
-          <Link to="/quora/">
+
+        {/* side nav start from here  */}
+       <div className='sideNav'>
+
+       <Link to="/quora/">
             <CardMedia
               component="img"
               image={Quoralogo}
@@ -84,118 +79,108 @@ function Navbar() {
               }}
             />
           </Link>
+        
+        <div className='sideNav-search'
+           style={{ border: `1px solid ${darkMode ? '#444' : '#dbcaca'}` }}>
+
+           <SearchIcon sx={{ color: 'grey', mr: '5px' }} fontSize="small" />
+           <form onSubmit={handleSearchSubmit}>
+             <input
+               placeholder="Search…"
+               style={{ color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}` }}
+               type='text'
+               value={searchTerm}
+               onChange={(e) => setSearchTerm(e.target.value)}
+               onClick={(e)=>setSearchTerm('')}
+             />
+           </form>
+         </div>
+         <button className='sideNav-try' style={{  border: `1px solid ${darkMode ? '#444' : '#dbcaca'}`,}} >
+           <Link to="/quora/premium" style={{ textDecoration: 'none', color: 'gray' }}>
+             Try Quora+
+           </Link>
+         </button>
+       </div>
+
+       {/* navbar start from here  */}
+        <div className='nav-header' >
+          <Link to="/quora/" className='nav-logo'>
+            <CardMedia
+              component="img"
+              image={Quoralogo}
+              alt="QuoraLogo"
+              height='25px'
+              sx={{
+                width: 'auto',
+                objectFit: 'cover',
+                mr: '20px',
+                ':hover': {
+                  opacity: '0.6',
+                  transition: '0.4s'
+                }
+              }}
+            />
+          </Link>
+
           <Link to="/quora/">
-            <Tooltip title="Home">
-              <Button sx={{
-                ':focus': {
-                  backgroundColor: '#c94747'
-                }
-              }}>
-                <HomeOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
-              </Button>
-            </Tooltip>
+              <button className='nav-icons' title='Home' >
+                <GoHome style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+              </button>
           </Link>
+
           <Link to="/quora/following">
-            <Tooltip title="Following">
-              <Button sx={{
-                ':focus': {
-                  backgroundColor: '#c94747'
-                }
-              }}>
-                <ListAltOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
-              </Button>
-            </Tooltip>
+              <button className='nav-icons' title='Following'>
+                <CiViewList style={{ color: `${darkMode ? '#bebcbc' : '#595959'}`}} />
+              </button>
           </Link>
+
           <Link to="/quora/answer">
-            <Tooltip title="Answer" >
-              <Button sx={{
-                ':focus': {
-                  backgroundColor: '#c94747'
-                }
-              }}>
-                <DrawOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
-              </Button>
-            </Tooltip>
+              <button className='nav-icons' title='Answer'>
+                <SlNote style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+              </button>
           </Link>
+
           <Link to="/quora/spaces">
-            <Tooltip title="Spaces">
-              <Button sx={{
-                ':focus': {
-                  backgroundColor: '#c94747'
-                }
-              }}>
-                <GroupsOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
-              </Button>
-            </Tooltip>
+              <button className='nav-icons' title='Spaces'>
+                <IoPeopleOutline style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+              </button>
           </Link>
+
           <Link to="/quora/notifications/:all">
-            <Tooltip title="Notifications">
-              <Button sx={{
-                ':focus': {
-                  backgroundColor: '#c94747'
-                }
-              }}>
-                <NotificationsOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
-              </Button>
-            </Tooltip>
+              <button className='nav-icons' title='Notifications'>
+                <IoNotificationsOutline style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+              </button>
           </Link>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              border: `1px solid ${darkMode ? '#444' : '#dbcaca'}`,
-              borderRadius: '4px',
-              px: '5px',
-              height: '35px',
-            }}>
+
+
+          <div className='nav-search'
+            style={{ border: `1px solid ${darkMode ? '#444' : '#dbcaca'}` }}>
 
             <SearchIcon sx={{ color: 'grey', mr: '5px' }} fontSize="small" />
             <form onSubmit={handleSearchSubmit}>
-              <InputBase
+              <input
                 placeholder="Search…"
-                sx={{ fontSize: '15px', width: '240px', color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}`, flexGrow: 1 }}
+                style={{ color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}` }}
                 type='text'
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onClick={(e)=>setSearchTerm('')}
               />
             </form>
-          </Box>
-          <Button
-            sx={{
-              mx: '10px',
-              textTransform: 'none',
-              borderRadius: '20px',
-              fontSize: '13px',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              height: '32px',
-              border: `1px solid ${darkMode ? '#444' : '#dbcaca'}`,
-              ':hover': {
-                outline: 'none'
-              },
-              display: { xs: 'none', sm: 'none', md: 'inline-block' }
-            }}
-          >
+          </div>
+          <button className='nav-try' style={{ border: `1px solid ${darkMode ? '#444' : '#dbcaca'}`,}}>
             <Link to="/quora/premium" style={{ textDecoration: 'none', color: 'gray' }}>
               Try Quora+
             </Link>
-          </Button>
+          </button>
 
           <Tooltip title="Open settings">
             <IconButton onClick={handleSettingModal} sx={{ p: 0, }}>
-              <Avatar alt={user?.name?.toUpperCase()} src={user?.name} sx={{ width: '35px', height: '35px', color: 'black' }} />
+              <Avatar alt={user?.name?.toUpperCase()} src={user?.name} sx={{ width: '35px', height: '35px', color: 'black', mx:'10px' }} />
             </IconButton>
           </Tooltip>
-          {/* <Modal open={openSettingModal} onClose={() => setOpenSettingModal(false)} > */}
             <Setting open={openSettingModal} setOpen={setOpenSettingModal}/>
-          {/* </Modal> */}
-
-          <Button>
-            <LanguageOutlinedIcon sx={{ color: `${darkMode ? '#bebcbc' : '#595959'}`, fontSize: "1.975rem", }} />
-          </Button>
-          <ButtonGroup>
+         
             <Button
               sx={{
                 ...buttonStyles,
@@ -204,23 +189,16 @@ function Navbar() {
               }}
               onClick={() => setOpenAddModal(true)}
             >
-              Add question
+             <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>Add question</span>  <IoMdArrowDropdown style={{fontSize:'25px', marginLeft:'10px'}} />
             </Button>
-            <Tooltip title="Create Post">
-              <Button sx={{
-                ...buttonStyles,
-                backgroundColor: `${darkMode ? '#b71414' : '#b71414'}`,
-                ':hover': { backgroundColor: `${darkMode ? 'brown' : 'brown'}` }
-              }} onClick={() => setOpenAddModal(true)}>
-                <KeyboardArrowDownIcon />
-              </Button>
-            </Tooltip>
-          </ButtonGroup>
+
           <Popup open={openAddModal} setOpen={setOpenAddModal} sx={{ backgroundColor: `${darkMode ? '#272727' : ''}` }}>
             <SubmitPost />
           </Popup>
 
-        </Box>
+        </div>
+
+        
       </Box>
     </Box>
   );

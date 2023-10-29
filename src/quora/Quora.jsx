@@ -43,10 +43,15 @@ const Quora = () => {
           <Box
             sx={{
               display: 'flex',
-              pt: '65px',
+              
               '@media (min-width: 480px)': {
                 mx: 0,
                 width: '100%',
+
+              },
+
+              '@media (min-width: 769px)': {
+                pt: '65px',
 
               },
 
@@ -54,6 +59,10 @@ const Quora = () => {
                 mx: 'auto',
                 width: '1105px',
               },
+
+              '@media (max-width:769px)':{
+                pt: '105px',
+              }
 
 
 

@@ -8,15 +8,10 @@ const productsHeader = {
     Authorization: `Bearer ${user?.token}`
 }
 
-// const myParams = {
-//     limit:100,
-// }
-
 const baseUrl = 'https://academics.newtonschool.co/api/v1';
 
 const createRequest = (url) => ({ url, headers: productsHeader });
 
-// const createRequestData = (url) => ({ url, headers: productsHeader, params: myParams });
 
 export const productApi = createApi({
     reducerPath: "productApi",
