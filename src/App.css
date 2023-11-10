@@ -76,6 +76,8 @@ body {
     text-overflow: ellipsis;
     height: 32px;
     outline: none;
+    background: transparent;
+    padding: 3px 7px;
 }
 
 .sideNav-try {
