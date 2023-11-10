@@ -64,7 +64,7 @@ const Sidebarleft = () => {
           <Typography variant="h6" fontSize='small'>Create Space</Typography>
         </Box>
         <Popup open={showCreateSpace} setOpen={setShowCreateSpace}>
-          <CreateSpace />
+          <CreateSpace setOpen={setShowCreateSpace}/>
         </Popup>
         <Link to="/quora/topic/sport" style={{ textDecoration: 'none',  color:`${darkMode?'#b8b4b4':'black'}` }}>
           <Box sx={{

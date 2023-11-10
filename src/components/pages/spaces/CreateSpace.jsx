@@ -7,7 +7,9 @@ import { useDispatch } from 'react-redux'
 import { createSpace } from '../../../services/spaceSlice'
 import { toast } from 'react-toastify'
 
-const CreateSpace = () => {
+const CreateSpace = (props) => {
+
+    const {setOpen} = props;
 
     const [title, setTitle] = useState("");
     const [content, setContent] =useState("");
@@ -28,6 +30,7 @@ const CreateSpace = () => {
 
        if(result.payload){
         toast.success(result.payload.message);
+        setOpen(false);
        }
        else{
         toast.error(result.error.message);
