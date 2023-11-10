@@ -3,14 +3,35 @@ import React, { useContext } from 'react'
 import Controls from '../../controls/Controls'
 import { useState } from 'react'
 import { DarkMode } from '../../../quora/Quora'
+import { useDispatch } from 'react-redux'
+import { createSpace } from '../../../services/spaceSlice'
+import { toast } from 'react-toastify'
 
 const CreateSpace = () => {
 
     const [title, setTitle] = useState("");
-    const [description, setDescription] =useState("");
-    const {darkMode} = useContext(DarkMode)
+    const [content, setContent] =useState("");
+    const {darkMode} = useContext(DarkMode);
 
-    const handleCreateSpaceEvent =()=>{
+    const dispatch = useDispatch();
+
+    const handleCreateSpaceEvent = async (e)=>{
+
+        e.preventDefault();
+
+        let spaceData = {
+            title,
+            content
+        }
+
+       const result =  await dispatch(createSpace(spaceData));
+
+       if(result.payload){
+        toast.success(result.payload.message);
+       }
+       else{
+        toast.error(result.error.message);
+       }
 
     }
 
@@ -38,8 +59,8 @@ const CreateSpace = () => {
                     name='description'
                     type='text'
                     required
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                 />
                 </Box>
                 

@@ -48,11 +48,7 @@ const Sidebarleft = () => {
         }
       }}
     >
-      <Box
-        // sx={{
-        //   position: 'fixed',
-        // }}
-      >
+      <Box >
         <Box
           sx={{
             ...boxStyles,

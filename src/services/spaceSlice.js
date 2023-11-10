@@ -13,7 +13,7 @@ export const createSpace = createAsyncThunk('createslice', async (spaceData) => 
 
     const formData = new FormData();
     formData.append('images', spaceData.image);
-    formData.append('title', spaceData.title);
+    formData.append('name', spaceData.title);
     formData.append('description', spaceData.content);
 
 
@@ -29,7 +29,7 @@ export const createSpace = createAsyncThunk('createslice', async (spaceData) => 
     const res = await fetch('https://academics.newtonschool.co/api/v1/quora/channel/', options);
 
     if (res.ok) {
-        const data = await res.JSON();
+        const data = await res.json();
         console.log('data', data);
         return await data;
     }
@@ -49,7 +49,8 @@ const spaceSlice = createSlice({
 
     },
     extraReducers : builder =>{
-        builder.addCase(createSpace.pending, state=>{
+        builder
+        .addCase(createSpace.pending, state=>{
             state.loading = true;
         })
         .addCase(createSpace.fulfilled, (state,action)=>{
