@@ -46,7 +46,7 @@ const HomeData = (props) => {
 
   const { data: getCommentsData, refetch, isLoading } = useCommentQuery(postId);
 
-  
+
   const onClickUpvote = async () => {
 
     const likeResult = await dispatch(addLikeCount(postId));
@@ -103,8 +103,8 @@ const HomeData = (props) => {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500], }} alt="" src={channel?.image}>
-              {author?.name?.split(' ')[0]?.charAt(0) }
-              
+              {author?.name?.split(' ')[0]?.charAt(0)}
+
             </Avatar>
           }
           title={<Typography sx={{ fontSize: '13px', fontWeight: '600' }}>{channel?.name}</Typography>}
@@ -114,12 +114,6 @@ const HomeData = (props) => {
           <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', mb: '20px' }}>{title}</Typography>
           <Typography variant="body2" sx={{ fontSize: '14px', color: `${darkMode ? '#b8b4b4' : '#4d4c4c'}` }}>{content}</Typography>
         </CardContent>
-        {/* {images.length > 0 && <CardMedia
-          component="img"
-          height="350"
-          image={images}
-          alt={channel?.name}
-        />} */}
 
         {images?.map((image, index) => (
           <CardMedia
