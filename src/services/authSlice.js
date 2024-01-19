@@ -13,10 +13,10 @@ export const signUpUser = createAsyncThunk('signupuser', async (userData) => {
 
     if (response.ok) {
       const data = await response.json();
-      const userSignupData = {
-        token : data.token,
-        name : data.data.user.name,
-        email : data.data.user.email
+      const userSignupData = await {
+        token : data?.token,
+        name : data?.data?.user?.name,
+        email : data?.data?.user?.email
       }
       localStorage.setItem('user', JSON.stringify(userSignupData));
       return await data;
@@ -40,9 +40,9 @@ export const loginUser = createAsyncThunk('user/loginuser', async (Credentials) 
     if (response.ok) {
       const data = await response.json();
       const userLoginData = {
-        token : data.token,
-        name : data.data.name,
-        email : data.data.email
+        token : data?.token,
+        name : data?.data?.name,
+        email : data?.data?.email
       }
       localStorage.setItem('user', JSON.stringify(userLoginData));
       return await data;

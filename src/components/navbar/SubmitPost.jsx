@@ -6,6 +6,7 @@ import { DarkMode } from '../../quora/Quora';
 import { useDispatch } from 'react-redux';
 import { createPost } from '../../services/postSlice';
 import { toast } from 'react-toastify';
+import { useGetPostDataQuery } from '../../services/productApi';
 
 const buttonStyles = {
   width: '50%',
@@ -39,10 +40,9 @@ const textareaStyles = {
 }
 
 const buttonContainerStyles = {
-  position: 'absolute',
   bottom: '10px',
-  right: '10px',
   display: 'flex',
+  justifyContent: 'space-between',
   gap: '10px',
 };
 
@@ -56,6 +56,8 @@ const SubmitPost = () => {
   const { darkMode } = useContext(DarkMode);
 
   const dispatch = useDispatch();
+
+  const {refetch} = useGetPostDataQuery();
 
 
 
@@ -71,6 +73,7 @@ const SubmitPost = () => {
     .then((result)=>{
       if(result.payload){
         toast.success(result.payload.message);
+        refetch();
       }
       else{
         toast.error(result.error.message);
@@ -91,6 +94,7 @@ const SubmitPost = () => {
     .then((result)=>{
       if(result.payload){
         toast.success(result.payload.message);
+        refetch(); 
       }
       else{
         toast.error(result.error.message);
@@ -147,7 +151,7 @@ const SubmitPost = () => {
       }
 
       {createPosts && <Box sx={{ py: '10px' }}>
-        <Box>
+        <Box sx={{height:'40vh'}}>
 
           <input type='text'
             placeholder='Enter title here'
@@ -166,8 +170,6 @@ const SubmitPost = () => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-
-          <img src={image} alt='uplaod' style={{ maxWidth: '100%', maxHeight: '200px'}}/>
 
         </Box>
         <Box sx={buttonContainerStyles}>

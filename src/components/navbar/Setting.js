@@ -1,7 +1,6 @@
 import React from 'react'
 import { Avatar, Box, Button, Modal, Switch, Typography } from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-// import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { DarkMode } from '../../quora/Quora';
@@ -17,10 +16,6 @@ const buttonStyles = {
 
 }
 
-// const iconStyles = {
-//   fontSize: '19px',
-//   mr: '5px'
-// }
 
 const Setting = (props) => {
 
@@ -68,11 +63,6 @@ const Setting = (props) => {
       </Box>
 
       <Box>
-        {/* <Box sx={{ borderBottom: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`, py: '10px' }}>
-          <Box>
-            <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }}><BookmarksOutlinedIcon sx={iconStyles} /> Bookmarks</Button>
-          </Box>
-        </Box> */}
         <Box sx={{ borderBottom: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`, py: '10px' }}>
           <Box>
             <Button sx={{ ...buttonStyles, color: `${darkMode ? '#d5d1d1' : 'black'}`, ':hover': { backgroundColor: `${darkMode ? '' : '#f4f3f3'}` } }} onClick={toggleDarkMode}>
