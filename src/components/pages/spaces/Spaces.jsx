@@ -6,7 +6,7 @@ import CommingSoon from '../../../images/under-construction.jpg'
 const Spaces = () => {
   return (
     <Box >
-        <img src={CommingSoon} alt='Comming Soon' style={{height:'90vh', width:'72vw', opacity:'0.7'}}/>
+        <img className='comming-soon' src={CommingSoon} alt='Comming Soon' style={{height:'90vh', opacity:'0.7'}}/>
     </Box>
   )
 }
