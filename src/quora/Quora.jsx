@@ -163,7 +163,7 @@ const Quora = () => {
               <Route
                 path="/premium"
                 element={
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div>
                     <Premium />
                   </div>
                 }

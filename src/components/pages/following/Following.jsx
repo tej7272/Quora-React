@@ -11,6 +11,9 @@ const Following = () => {
 
   const followingData = postData?.data?.slice(10);
 
+    // const reversedData = followingData.slice().reverse();
+    // console.log(reversedData);
+
   return (
     <Box sx={{
       px: 1,

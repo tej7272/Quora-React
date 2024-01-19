@@ -1,7 +1,7 @@
 .premium-box{
     display:flex;
     flex-direction: column;
-    width: 1100px;
+    
 }
 .premium-page-container{
     background-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%), url("https://www.redditstatic.com/desktop2x/img/gold/premium-marketing/premiumHero.jpg");
@@ -10,7 +10,7 @@
     background-repeat: no-repeat;
     padding: 100px 60px 140px 60px;
     height: 80%;
-    /* border: 1px solid black; */
+    border: 1px solid black;
 }
 .premium-header img{
     width: 80px;
@@ -141,4 +141,34 @@
 }
 .footer-premium ul li a{
     color: #ddd;
+}
+
+@media screen and (max-width:680px){
+
+    .premium-box{
+        width:100%;
+    }
+
+    .premium-header h1{
+        font-size: large;
+    }
+    .cards-container{
+        display: block;
+        margin: 20px 0px;
+    }
+    .card{
+        margin-bottom: 10px;
+    }
+    .join-premium{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 15px;
+    }
+    .footer-premium{
+        padding: 0px 10px;
+    }
 }

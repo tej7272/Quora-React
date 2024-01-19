@@ -68,7 +68,7 @@ const Premium = () => {
                         <div>Blog</div>
                         <div>Help</div>
                     </div>
-                    <div className="footer-card" style={{ borderRight: "1px solid #ddd", width: "180px", lineHeight: '50px' }}>
+                    <div className="footer-card" style={{ borderRight: "1px solid #ddd", lineHeight: '50px' }}>
                         <div>Quora Premium</div>
                         <div></div>
                         <div></div>
