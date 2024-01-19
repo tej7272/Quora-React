@@ -42,7 +42,7 @@ const Quora = () => {
 
           <Box
             sx={{
-              display: 'flex',
+              // display: 'flex',
               
               '@media (min-width: 480px)': {
                 mx: 0,
@@ -58,6 +58,11 @@ const Quora = () => {
               '@media (min-width: 1110px)': {
                 mx: 'auto',
                 width: '1105px',
+              },
+
+
+              '@media (max-width:480px)' :{
+                width:'100%'
               },
 
               '@media (max-width:769px)':{

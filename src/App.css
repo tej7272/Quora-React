@@ -157,6 +157,7 @@ body {
 
 
 
+
 @media (min-width:769px) {
     .nav-header {
         width: 100%;
@@ -239,16 +240,4 @@ body {
         width: 100%;
     }
 }
-
-/* @media (max-width:480px){
-
-    .login-container{
-        display: block;
-    }
-
-
-    .login-signup{
-        width: 100%;
-    }
-} */
 
