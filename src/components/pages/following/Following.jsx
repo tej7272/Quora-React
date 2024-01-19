@@ -9,10 +9,7 @@ const Following = () => {
 
   const {data : postData, isLoading} = useGetPostDataQuery();
 
-  const followingData = postData?.data?.slice(10);
-
-    // const reversedData = followingData.slice().reverse();
-    // console.log(reversedData);
+  const followingData = postData?.data?.slice(70);
 
   return (
     <Box sx={{
