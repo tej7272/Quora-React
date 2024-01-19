@@ -29,17 +29,17 @@ const AddQuestion = () => {
   const { darkMode } = useContext(DarkMode);
 
   return (
-    <Box>
+    <div style={{width:'100%'}}>
       <Card
         sx={{
           p: 1,
           width: '100%',
-          minWidth: '350px',
+          // minWidth: '350px',
           boxShadow: '0px 0px 3px 0px rgba(0,0,0,0.2)',
           background: `${darkMode ? '#292929' : ''}`,
           color: `${darkMode ? '#b8b4b4' : ''}`
         }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, width:'100%' }}>
           <Avatar />
           <Box
             sx={{
@@ -86,7 +86,7 @@ const AddQuestion = () => {
           <SubmitPost />
         </Popup>
       </Card>
-    </Box>
+    </div>
   )
 }
 

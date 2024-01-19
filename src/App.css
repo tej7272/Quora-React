@@ -10,6 +10,10 @@ body {
     scrollbar-width: none;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+  }
+
 .comment-input {
     width: 70%;
     margin: 0 10px;
@@ -52,9 +56,10 @@ body {
     background-color: #c94747;
 }
 
-.nav-icons svg{
+.nav-icons svg {
     font-size: 25px;
 }
+
 .nav-search form {
     width: 90%;
 }
@@ -100,22 +105,53 @@ body {
     flex-grow: 1;
 }
 
-.sideNav{
-    display:flex;
+.sideNav {
+    display: flex;
     justify-content: space-between;
     margin: 3px 10px;
-    
+
 }
 
-.sideNav form{
-    width:90%;
+.sideNav form {
+    width: 90%;
 }
 
-.sideNav input{
-    width:100%;
+.sideNav input {
+    width: 100%;
     border: none;
     outline: none;
     background: transparent;
+}
+
+
+/* login section */
+.login-box {
+    background: white;
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
+    width: 768px;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.login-container {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-signup{
+    width: 50%;
+    margin: 5px 15px;
+}
+
+.signup-btn{
+    display: none;
 }
 
 
@@ -127,14 +163,14 @@ body {
 
     }
 
-    .sideNav{
+    .sideNav {
         display: none;
     }
 
     .sideNav-search {
         display: none;
 
-    } 
+    }
 
 }
 
@@ -145,8 +181,38 @@ body {
     }
 }
 
+@media (max-width:530px){
+
+    .login-signup{
+        width: 100%;
+        display: block;
+    }
+
+    .hidden-xs{
+        display: none;
+    }
+
+    .signup-btn{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+        border-top: 1px solid #e6dada ;
+    }
+
+    .signup-btn button{
+        padding: 10px 15px;
+        background-color: rgb(96, 212, 235);
+        border: none;
+        outline:none;
+        border-radius: 20px;
+        margin-top: 15px;
+    }
+}
+
 @media (max-width:769px) {
-    
+
     .sideNav-search {
         margin: 0 10px;
         flex-grow: 1;
@@ -157,15 +223,32 @@ body {
         align-items: center;
     }
 
-    .nav-logo{
-        display:none;
+    .nav-logo {
+        display: none;
     }
 
     .nav-search {
         display: none;
     }
 
-    .nav-try{
+    .nav-try {
         display: none;
     }
+
+    .login-box{
+        width: 100%;
+    }
 }
+
+/* @media (max-width:480px){
+
+    .login-container{
+        display: block;
+    }
+
+
+    .login-signup{
+        width: 100%;
+    }
+} */
+

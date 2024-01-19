@@ -85,19 +85,7 @@ const Login = () => {
         m: 'auto'
       }}
     >
-      <Box
-        sx={{
-          backgroundColor: 'white',
-          pt: '2rem',
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'column',
-          borderRadius: '4px',
-          width: '43rem',
-          justifyContent: 'center',
-          boxSizing: 'border-box',
-
-        }}>
+      <div className='login-box'>
         <Box>
 
           <CardMedia
@@ -113,15 +101,11 @@ const Login = () => {
             }}
           />
         </Box>
-        <Typography variant='h6' fontSize='14px' fontWeight='600'>A place to share knowledge and better understand the world</Typography>
-        <Box
-          sx={{
-            display: 'flex',
-            mt: '40px',
-            mb: '20px',
-            justifyContent: 'center'
-          }} >
-          <Box sx={{ width: '20rem', borderRight: '1px solid #e6dada' }}>
+        <Typography variant='h6' fontSize='14px' fontWeight='600' sx={{mx:'10px'}}>A place to share knowledge and better understand the world</Typography>
+
+        <div className='login-container ' >
+
+          <div className='login-signup hidden-xs' style={{ borderRight: '1px solid #e6dada' }}>
             <Box sx={{ mr: '24px', }}>
               <Typography variant='subtitle2' fontSize='13px' sx={{ color: 'gray' }} >
                 By continuing you indicate that you agree to Quora’s
@@ -155,8 +139,8 @@ const Login = () => {
                 <Signup />
               </LoginPopup>
             </Box>
-          </Box>
-          <Box sx={{ width: '20rem', color: '#393535' }}>
+          </div>
+          <div className='login-signup' style={{ color: '#393535' }}>
             <Box sx={{ ml: '24px', }}>
               <Box sx={{ borderBottom: '1px solid #e6dada', pb: '8px', fontSize: '15px',}}>
                 Login
@@ -194,13 +178,18 @@ const Login = () => {
                   >
                     <Forgotpassword />
                   </LoginPopup>
-                  <Controls.Button type='submit' text='Login'
-                  />
+                  <Controls.Button type='submit' text='Login'/>
+
                 </Box>
+                
+
               </form>
+                  <div className='signup-btn'>
+                    <button onClick={handleSignUp}> Create New Account</button>
+                  </div>
             </Box>
-          </Box>
-        </Box>
+          </div>
+        </div>
         <Box sx={{...boxStyles, borderTop: '1px solid #e6dada', borderBottom: '1px solid #e6dada', }}>
           <p style={{ fontSize: 'small', }}>हिन्दी</p>
         </Box>
@@ -217,7 +206,7 @@ const Login = () => {
           </Box>
           <p>&copy; Quora, Inc. 2023</p>
         </Box>
-      </Box>
+      </div>
     </Box>
   )
 }

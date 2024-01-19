@@ -14,6 +14,7 @@ import { addLikeCount, deleteLikeCount } from '../../../services/likeSlice';
 import { addComments } from '../../../services/commentSlice';
 
 
+
 const buttonStyles = {
   color: 'gray',
   border: 'none',
@@ -98,12 +99,12 @@ const FollowingData = (props) => {
       }} >
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500], }} alt="" src={author.profileImage}>
-              R
+            <Avatar sx={{ bgcolor: red[500], }} alt="" src={channel?.image}>
+              {author?.name?.split(' ')[0]?.charAt(0) }
             </Avatar>
           }
-          title={<Typography sx={{ fontSize: '13px', fontWeight: '600' }}>{channel.name}</Typography>}
-          subheader={<p style={{ fontSize: '13px', fontWeight: '400', margin: 0, color: `${darkMode ? '#b8b4b4' : ''}` }}>Posted by <span style={{ fontWeight: '800', color: `${darkMode ? '#b8b4b4' : ''}` }}>{author.name}</span></p>}
+          title={<Typography sx={{ fontSize: '13px', fontWeight: '600' }}>{channel?.name}</Typography>}
+          subheader={<p style={{ fontSize: '13px', fontWeight: '400', margin: 0, color: `${darkMode ? '#b8b4b4' : ''}` }}>Posted by <span style={{ fontWeight: '800', color: `${darkMode ? '#b8b4b4' : ''}` }}>{author?.name}</span></p>}
         />
         <CardContent>
           <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', mb: '20px' }}>{title}</Typography>

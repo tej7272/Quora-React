@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 import { useCommentQuery } from '../../../services/productApi';
 import { addLikeCount, deleteLikeCount } from '../../../services/likeSlice';
 
+
 const buttonStyles = {
   color: 'gray',
   border: 'none',
@@ -31,7 +32,7 @@ const buttonStyles = {
 
 const HomeData = (props) => {
 
-  const { author, channel, title, content, commentCount, likeCount, _id } = props;
+  const { author, channel, title, content, commentCount, likeCount, _id, images } = props;
   const [like, setLike] = useState(likeCount);
   const [showComments, setShowComments] = useState(false);
   const [colorUp, setColorUp] = useState("#4242ca");
@@ -45,7 +46,7 @@ const HomeData = (props) => {
 
   const { data: getCommentsData, refetch, isLoading } = useCommentQuery(postId);
 
-
+  
   const onClickUpvote = async () => {
 
     const likeResult = await dispatch(addLikeCount(postId));
@@ -58,10 +59,10 @@ const HomeData = (props) => {
   const onClickDownVote = async () => {
 
     const deleteResult = await dispatch(deleteLikeCount(postId));
-    if(deleteResult.payload){
+    if (deleteResult.payload) {
       setLike((prevState) => prevState - 1);
-        setColorUp("#4242ca");
-        setColorDown("#ff4500")
+      setColorUp("#4242ca");
+      setColorDown("#ff4500")
     }
   }
 
@@ -101,23 +102,35 @@ const HomeData = (props) => {
         }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500], }} alt="" src={author.profileImage}>
-              R
+            <Avatar sx={{ bgcolor: red[500], }} alt="" src={channel?.image}>
+              {author?.name?.split(' ')[0]?.charAt(0) }
+              
             </Avatar>
           }
-          title={<Typography sx={{ fontSize: '13px', fontWeight: '600' }}>{channel.name}</Typography>}
-          subheader={<p style={{ fontSize: '13px', fontWeight: '400', margin: 0, color: `${darkMode ? '#b8b4b4' : ''}` }}>Posted by <span style={{ fontWeight: '800', color: `${darkMode ? '#b8b4b4' : ''}` }}>{author.name}</span></p>}
+          title={<Typography sx={{ fontSize: '13px', fontWeight: '600' }}>{channel?.name}</Typography>}
+          subheader={<p style={{ fontSize: '13px', fontWeight: '400', margin: 0, color: `${darkMode ? '#b8b4b4' : ''}` }}>Posted by <span style={{ fontWeight: '800', color: `${darkMode ? '#b8b4b4' : ''}` }}>{author?.name}</span></p>}
         />
         <CardContent>
           <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', mb: '20px' }}>{title}</Typography>
           <Typography variant="body2" sx={{ fontSize: '14px', color: `${darkMode ? '#b8b4b4' : '#4d4c4c'}` }}>{content}</Typography>
         </CardContent>
-        <CardMedia
+        {/* {images.length > 0 && <CardMedia
           component="img"
           height="350"
-          image={channel.image}
-          alt={channel.name}
-        />
+          image={images}
+          alt={channel?.name}
+        />} */}
+
+        {images?.map((image, index) => (
+          <CardMedia
+            key={index}
+            component="img"
+            height="350"
+            image={image}
+            alt={`${channel?.name} Image ${index + 1}`}
+          />
+        ))}
+
         <CardActions sx={{ height: '45px' }}>
           <ButtonGroup variant="text" color='secondary' >
             <Button variant="text" sx={{ ...buttonStyles, backgroundColor: `${darkMode ? '#3d3b3b' : '#ece9e9'}`, ':hover': { backgroundColor: `${darkMode ? '#555454' : '#ece9e9'}` } }} onClick={onClickUpvote}>
