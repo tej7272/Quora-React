@@ -44,7 +44,7 @@ const Setting = (props) => {
   }
 
   return (
-    <Modal sx={{ top: '50px', left: '60%' }} open={open} onClose={() => setOpen(false)}>
+    <Modal sx={{ '@media (max-width:480px)':{left:'20%',top:'100px'},'@media (min-width:480px)':{left:'60%',  top: '50px',} }} open={open} onClose={() => setOpen(false)}>
     <Box
       sx={{
         border: `1px solid ${darkMode ? '#484848' : '#d5d1d1'}`,

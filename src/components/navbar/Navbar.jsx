@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, IconButton, Avatar, Button, Tooltip, CardMedia, } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Quoralogo from '../../images/Quora_Logo.png'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Setting from './Setting';
 import SubmitPost from './SubmitPost';
 import Popup from '../controls/Popup'
@@ -31,6 +31,9 @@ const buttonStyles = {
 
 
 function Navbar() {
+
+  const location = useLocation();
+  // console.log('location', location.pathname);
 
   const [openSettingModal, setOpenSettingModal] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
@@ -122,33 +125,33 @@ function Navbar() {
             />
           </Link>
 
-          <Link to="/quora/">
+          <Link className={` nav-link ${location.pathname==='/quora/'?'location':''}`} to="/quora/">
               <button className='nav-icons' title='Home' >
-                <GoHome style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+                <GoHome style={{ color: `${darkMode ? '#bebcbc' : location.pathname==='/quora/'?'rgb(164, 2, 2)':'#595959'}` }} />
               </button>
           </Link>
 
-          <Link to="/quora/following">
+          <Link className={`nav-link ${location.pathname==='/quora/following'?'location':''}`} to="/quora/following">
               <button className='nav-icons' title='Following'>
-                <CiViewList style={{ color: `${darkMode ? '#bebcbc' : '#595959'}`}} />
+                <CiViewList style={{ color: `${darkMode ? '#bebcbc' : location.pathname==='/quora/following'?'rgb(164, 2, 2)':'#595959'}` }} />
               </button>
           </Link>
 
-          <Link to="/quora/answer">
+          <Link className={`nav-link ${location.pathname==='/quora/answer'?'location':''}`} to="/quora/answer">
               <button className='nav-icons' title='Answer'>
-                <SlNote style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+                <SlNote style={{ color: `${darkMode ? '#bebcbc' : location.pathname==='/quora/answer'?'rgb(164, 2, 2)':'#595959'}` }} />
               </button>
           </Link>
 
-          <Link to="/quora/spaces">
+          <Link className={`nav-link ${location.pathname === '/quora/spaces' ? 'location' : ''}`} to="/quora/spaces">
               <button className='nav-icons' title='Spaces'>
-                <IoPeopleOutline style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+                <IoPeopleOutline style={{ color: `${darkMode ? '#bebcbc' : location.pathname==='/quora/spaces'?'rgb(164, 2, 2)':'#595959'}` }} />
               </button>
           </Link>
 
-          <Link to="/quora/notifications/:all">
+          <Link className={`nav-link ${location.pathname.startsWith('/quora/notifications/') ? 'location' : ''}`} to="/quora/notifications/:all">
               <button className='nav-icons' title='Notifications'>
-                <IoNotificationsOutline style={{ color: `${darkMode ? '#bebcbc' : '#595959'}` }} />
+                <IoNotificationsOutline style={{ color: `${darkMode ? '#bebcbc' : location.pathname.startsWith('/quora/notifications/')?'rgb(164, 2, 2)':'#595959'}` }} />
               </button>
           </Link>
 
@@ -174,8 +177,8 @@ function Navbar() {
             </Link>
           </button>
 
-          <Tooltip title="Open settings">
-            <IconButton onClick={handleSettingModal} sx={{ p: 0, }}>
+          <Tooltip title="Open settings" >
+            <IconButton onClick={handleSettingModal} sx={{ p: 0,':hover':{background:'transparent'} }}>
               <Avatar alt={user?.name?.toUpperCase()} src={user?.name} sx={{ width: '35px', height: '35px', color: 'black', mx:'10px' }} />
             </IconButton>
           </Tooltip>

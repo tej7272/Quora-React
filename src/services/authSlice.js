@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
+
 export const signUpUser = createAsyncThunk('signupuser', async (userData) => {
     const response = await fetch('https://academics.newtonschool.co/api/v1/user/signup', {
         method: 'POST',

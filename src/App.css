@@ -45,16 +45,24 @@ body {
 
 }
 
+.nav-link{
+    margin:0 5px
+}
+.location{
+    border-bottom: 5px solid rgb(164, 2, 2);
+    border-radius: 2px;
+}
+
+.location svg{
+    color:rgb(164, 2, 2);
+}
+
 .nav-icons {
     background: transparent;
     border: none;
-    margin: 0 6px;
     cursor: pointer;
 }
 
-.nav-icons:focus {
-    background-color: #c94747;
-}
 
 .nav-icons svg {
     font-size: 25px;

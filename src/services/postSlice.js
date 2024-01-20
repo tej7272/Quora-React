@@ -21,12 +21,10 @@ export const createPost = createAsyncThunk('createpost', async (inputValue) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log('data', data);
     return await data;
   }
   else{
     const errorData = await response.json();
-    console.log('error',errorData);
     throw new Error(errorData.message);
 }
 })
