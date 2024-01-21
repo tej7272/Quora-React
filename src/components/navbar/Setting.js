@@ -21,7 +21,7 @@ const Setting = (props) => {
 
   const {open, setOpen} = props;
 
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   const { darkMode, setDarkMode } = useContext(DarkMode);
 
   const toggleDarkMode = (e) => {
@@ -37,7 +37,7 @@ const Setting = (props) => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     toast.success("User logout successfully");
     navigate("/login");
 

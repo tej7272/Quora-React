@@ -6,7 +6,7 @@ const initialState = {
     error: ""
 }
 
-const user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 export const addComments = createAsyncThunk('addcomments', async ({postId, commentValue}) => {
     const url = `https://academics.newtonschool.co/api/v1/quora/comment/${postId}`;

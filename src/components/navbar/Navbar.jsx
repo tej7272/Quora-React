@@ -38,7 +38,7 @@ function Navbar() {
   const [openSettingModal, setOpenSettingModal] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
   const { searchTerm, setSearchTerm } = useContext(SearchContext);
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
 
   const { darkMode } = useContext(DarkMode);
   const navigate = useNavigate();
@@ -87,7 +87,7 @@ function Navbar() {
            style={{ border: `1px solid ${darkMode ? '#444' : '#dbcaca'}` }}>
 
            <SearchIcon sx={{ color: 'grey', mr: '5px' }} fontSize="small" />
-           <form onSubmit={handleSearchSubmit}>
+           <form id='side-search-bar' onSubmit={handleSearchSubmit}>
              <input
                placeholder="Search…"
                style={{ color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}` }}
@@ -160,7 +160,7 @@ function Navbar() {
             style={{ border: `1px solid ${darkMode ? '#444' : '#dbcaca'}` }}>
 
             <SearchIcon sx={{ color: 'grey', mr: '5px' }} fontSize="small" />
-            <form onSubmit={handleSearchSubmit}>
+            <form onSubmit={handleSearchSubmit} id='search-bar'>
               <input
                 placeholder="Search…"
                 style={{ color: `${darkMode ? 'rgba(253, 251, 251, 0.87)' : ''}` }}
@@ -196,7 +196,7 @@ function Navbar() {
             </Button>
 
           <Popup open={openAddModal} setOpen={setOpenAddModal} sx={{ backgroundColor: `${darkMode ? '#272727' : ''}` }}>
-            <SubmitPost />
+            <SubmitPost  setOpen={setOpenAddModal} />
           </Popup>
 
         </div>

@@ -6,9 +6,9 @@ body {
     height: '100%'
 }
 
-* {
+/* * {
     scrollbar-width: none;
-}
+} */
 
 ::-webkit-scrollbar {
     width: 0;
@@ -51,10 +51,6 @@ body {
 .location{
     border-bottom: 5px solid rgb(164, 2, 2);
     border-radius: 2px;
-}
-
-.location svg{
-    color:rgb(164, 2, 2);
 }
 
 .nav-icons {

@@ -12,6 +12,7 @@ import { addComments } from '../../../services/commentSlice';
 import { toast } from 'react-toastify';
 import { useCommentQuery } from '../../../services/productApi';
 import { addLikeCount, deleteLikeCount } from '../../../services/likeSlice';
+// import { deletePost } from '../../../services/postSlice';
 
 
 const buttonStyles = {
@@ -44,7 +45,8 @@ const HomeData = (props) => {
 
   const postId = _id;
 
-  const { data: getCommentsData, refetch, isLoading } = useCommentQuery(postId);
+  const { data: getCommentsData,refetch, isLoading } = useCommentQuery(postId);
+  // const {refetch} = useGetPostDataQuery();
 
 
   const onClickUpvote = async () => {
@@ -89,6 +91,26 @@ const HomeData = (props) => {
       }
     }
   }
+
+  // const handleDeletePost = async (e)=>{
+  //   e.preventDefault();
+
+  //   try {
+
+  //   const actionResult = await dispatch(deletePost(postId));
+  //     if (deletePost.fulfilled.match(actionResult)) {
+  //       toast.success(actionResult.payload.message);
+  //       console.log(actionResult.payload.message);
+        
+
+  //     } else {
+  //       toast.error(actionResult.error.message);
+  //       console.log(actionResult.error.message);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // }
 
 
   return (
@@ -139,11 +161,14 @@ const HomeData = (props) => {
           <Button aria-label="Comments" sx={{ ml: '10px', color: 'gray' }} onClick={handleShowComments}>
             <ChatBubbleOutlineRoundedIcon sx={{ mr: '5px', }} fontSize='small' />{commentCount}
           </Button>
+          {/* <Button aria-label="Delete post" sx={{ ml: '10px', color: 'gray' }} onClick={handleDeletePost}>
+            <ChatBubbleOutlineRoundedIcon sx={{ mr: '5px', }} fontSize='small' />
+          </Button> */}
 
         </CardActions>
         {showComments && <Box sx={{ p: '20px 10px' }}>
 
-          <form>
+          <form id='form-container'>
             <input placeholder="Add a reply..." type="text" value={commentValue} onChange={(e) => setCommentValue(e.target.value)} className="comment-input" />
             <button className="comment-btn" onClick={handleAddComments}>Add Comments</button>
           </form>

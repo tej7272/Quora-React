@@ -46,7 +46,9 @@ const buttonContainerStyles = {
   gap: '10px',
 };
 
-const SubmitPost = () => {
+const SubmitPost = (props) => {
+
+  const { setOpen} = props;
 
   const [addQuestion, setAddQuestion] = useState(true);
   const [title ,setTitle] = useState('');
@@ -74,6 +76,7 @@ const SubmitPost = () => {
       if(result.payload){
         toast.success(result.payload.message);
         refetch();
+        setOpen(false);
       }
       else{
         toast.error(result.error.message);
@@ -95,6 +98,7 @@ const SubmitPost = () => {
       if(result.payload){
         toast.success(result.payload.message);
         refetch(); 
+        setOpen(false);
       }
       else{
         toast.error(result.error.message);

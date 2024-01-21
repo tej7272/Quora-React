@@ -3,7 +3,7 @@ import Loading from './Loading';
 
 
 function getUser(){
-  let user = localStorage.getItem('user');
+  let user = sessionStorage.getItem('user');
 
   if(user){
     user = JSON.parse(user);

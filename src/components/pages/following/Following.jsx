@@ -9,7 +9,7 @@ const Following = () => {
 
   const {data : postData, isLoading} = useGetPostDataQuery();
 
-  const followingData = postData?.data?.slice(82);
+  const followingData = postData?.data?.slice(15);
 
   return (
     <Box sx={{

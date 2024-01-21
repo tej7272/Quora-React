@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const user = JSON.parse(localStorage.getItem("user"))
+const user = JSON.parse(sessionStorage.getItem("user"))
 
 
 const productsHeader = {
@@ -19,7 +19,7 @@ export const productApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),
     endpoints: (builder) => ({
         getPostData: builder.query({
-            query: () => createRequest(`/quora/post?limit=110`)
+            query: () => createRequest(`/quora/post?limit=75`)
         }),
         Comment: builder.query({
             query: (postId) => createRequest(`/quora/post/${postId}/comments`)
