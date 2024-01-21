@@ -125,7 +125,7 @@ function Navbar() {
             />
           </Link>
 
-          <Link className={` nav-link ${location.pathname==='/quora/'?'location':''}`} to="/quora/">
+          <Link className={` nav-link ${(location.pathname==='/quora/' || location.pathname==='/quora')?'location':''}`} to="/quora/">
               <button className='nav-icons' title='Home' >
                 <GoHome style={{ color: `${darkMode ? '#bebcbc' : location.pathname==='/quora/'?'rgb(164, 2, 2)':'#595959'}` }} />
               </button>
@@ -195,9 +195,9 @@ function Navbar() {
              <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>Add question</span>  <IoMdArrowDropdown style={{fontSize:'25px', marginLeft:'10px'}} />
             </Button>
 
-          <Popup open={openAddModal} setOpen={setOpenAddModal} sx={{ backgroundColor: `${darkMode ? '#272727' : ''}` }}>
+          {/* <Popup open={openAddModal} setOpen={setOpenAddModal} sx={{ backgroundColor: `${darkMode ? '#272727' : ''}` }}>
             <SubmitPost  setOpen={setOpenAddModal} />
-          </Popup>
+          </Popup> */}
 
         </div>
 
