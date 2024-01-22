@@ -161,9 +161,9 @@ const HomeData = (props) => {
           <Button aria-label="Comments" sx={{ ml: '10px', color: 'gray' }} onClick={handleShowComments}>
             <ChatBubbleOutlineRoundedIcon sx={{ mr: '5px', }} fontSize='small' />{commentCount}
           </Button>
-          {/* <Button aria-label="Delete post" sx={{ ml: '10px', color: 'gray' }} onClick={handleDeletePost}>
+           {/*<Button aria-label="Delete post" sx={{ ml: '10px', color: 'gray' }} onClick={handleDeletePost}>
             <ChatBubbleOutlineRoundedIcon sx={{ mr: '5px', }} fontSize='small' />
-          </Button> */}
+          </Button>*/}
 
         </CardActions>
         {showComments && <Box sx={{ p: '20px 10px' }}>

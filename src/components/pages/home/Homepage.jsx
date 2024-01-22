@@ -12,8 +12,9 @@ const Homepage = () => {
   const { searchTerm } = useContext(SearchContext);
 
 
-  const { data: postData, isLoading } = useGetPostDataQuery();
+  const { data: postData,isLoading } = useGetPostDataQuery();
 
+  
 
 
   useEffect(() => {

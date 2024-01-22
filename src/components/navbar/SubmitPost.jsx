@@ -63,20 +63,21 @@ const SubmitPost = (props) => {
 
 
 
-  const handleCreatePost = (e) => {
-    e.preventDefault();
+  const handleCreatePost = () => {
 
     let inputValue = {
       title,
       content,
       image
     }
+    
     dispatch(createPost(inputValue))
     .then((result)=>{
       if(result.payload){
         toast.success(result.payload.message);
         refetch();
         setOpen(false);
+       
       }
       else{
         toast.error(result.error.message);
@@ -85,19 +86,20 @@ const SubmitPost = (props) => {
   }
 
   
-  const handleAddQuestion = (e) => {
-    e.preventDefault();
+  const handleAddQuestion = async () => {
+
+    
 
     let inputValue = {
       title,
       content,
       image
     }
-    dispatch(createPost(inputValue))
+    await dispatch(createPost(inputValue))
     .then((result)=>{
       if(result.payload){
         toast.success(result.payload.message);
-        refetch(); 
+       refetch(); 
         setOpen(false);
       }
       else{
