@@ -45,8 +45,10 @@ const HomeData = (props) => {
 
   const postId = _id;
 
-  const { data: getCommentsData,refetch, isLoading } = useCommentQuery(postId);
-  // const {refetch} = useGetPostDataQuery();
+  console.log(postId);
+
+  const { data: getCommentsData, refetch : commentRefetch, isLoading } = useCommentQuery(postId);
+  // const {refetch: postRefetch } = useGetPostDataQuery();
 
 
   const onClickUpvote = async () => {
@@ -87,7 +89,7 @@ const HomeData = (props) => {
       if (result.payload) {
         toast.success(result.payload.message);
         setCommentValue('');
-        await refetch();
+        await commentRefetch();
       }
     }
   }
@@ -100,16 +102,17 @@ const HomeData = (props) => {
   //   const actionResult = await dispatch(deletePost(postId));
   //     if (deletePost.fulfilled.match(actionResult)) {
   //       toast.success(actionResult.payload.message);
-  //       console.log(actionResult.payload.message);
         
 
   //     } else {
   //       toast.error(actionResult.error.message);
-  //       console.log(actionResult.error.message);
   //     }
   //   } catch (error) {
   //     console.error('Error:', error);
   //   }
+
+  //   await  postRefetch();
+   
   // }
 
 
@@ -161,9 +164,9 @@ const HomeData = (props) => {
           <Button aria-label="Comments" sx={{ ml: '10px', color: 'gray' }} onClick={handleShowComments}>
             <ChatBubbleOutlineRoundedIcon sx={{ mr: '5px', }} fontSize='small' />{commentCount}
           </Button>
-           {/*<Button aria-label="Delete post" sx={{ ml: '10px', color: 'gray' }} onClick={handleDeletePost}>
+           {/* <Button aria-label="Delete post" sx={{ ml: '10px', color: 'gray' }} onClick={handleDeletePost}>
             <ChatBubbleOutlineRoundedIcon sx={{ mr: '5px', }} fontSize='small' />
-          </Button>*/}
+          </Button> */}
 
         </CardActions>
         {showComments && <Box sx={{ p: '20px 10px' }}>

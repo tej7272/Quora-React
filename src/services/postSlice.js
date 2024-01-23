@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-const user = JSON.parse(sessionStorage.getItem("user"))
 
 
 export const createPost = createAsyncThunk('createpost', async (inputValue) => {
@@ -15,10 +14,12 @@ export const createPost = createAsyncThunk('createpost', async (inputValue) => {
     method: 'POST',
     headers: {
       'projectId': 'bc73q6nn4srr',
-      Authorization: `Bearer ${user?.token}`
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem("user"))?.token}`
     },
     body: formData
   });
+
+  console.log(JSON.parse(sessionStorage.getItem("user"))?.token);
 
   if (response.ok) {
     const data = await response.json();
@@ -32,32 +33,42 @@ export const createPost = createAsyncThunk('createpost', async (inputValue) => {
 
 // export const deletePost = createAsyncThunk('deletepost', async (postId) => {
 
-//   const res = await fetch(`https://academics.newtonschool.co/api/v1/quora/post/${postId}`, {
+
+//   const url = `https://academics.newtonschool.co/api/v1/quora/post/${postId}`;
+
+//   const options = {
 //     method: 'DELETE',
 //     headers: {
-//       'projectId': 'bc73q6nn4srr',
-//       Authorization: `Bearer ${user?.token}`
+//       'Content-Type': 'application/json',
+//       projectId : 'bc73q6nn4srr',
+//       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem("user"))?.token}`
 //     }
-//   })
-
-//   if (res.ok) {
-//     const data = await res.json();
-//     return await data;
 //   }
-//   else {
-//     const errorData = await res.json();
-//     throw new Error(errorData.message);
+
+//   try {
+//     const res = await fetch(url, options);
+
+//     if (res.ok) {
+//       const data = await res.json();
+//       return data;
+//     } else {
+//       const errorData = await res.json();
+//       console.error("Error deleting post:", errorData);
+//       throw new Error(errorData.message);
+//     }
+//   } catch (error) {
+//     console.error("Error in deletePost async thunk:", error);
+//     throw error;
 //   }
 // })
 
 
 const postSlice = createSlice({
-  name: "user",
-  initialState: {
-    post: [],
+  name: "post",
+  initialState : {
+    posts: [],
     loading: false,
-    error: null
-
+    error: "",
   },
   reducers: {
 
@@ -67,29 +78,27 @@ const postSlice = createSlice({
     builder
       .addCase(createPost.pending, (state) => {
         state.loading = true;
-        state.post = null;
-        state.error = null
       })
       .addCase(createPost.fulfilled, (state, action) => {
         state.loading = false;
-        state.post = action.payload;
-        state.error = null
+        state.posts = action.payload.posts;
       })
       .addCase(createPost.rejected, (state, action) => {
         state.loading = false;
-        state.post = null;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       // .addCase(deletePost.pending, (state) => {
       //   state.loading = true;
       // })
       // .addCase(deletePost.fulfilled, (state, action) => {
       //   state.loading = false;
-      //   state.post = action.payload.post;
+      //   console.log("Server response after deleting post:", action.payload);
+      //   state.posts = action.payload.posts;
       // })
       // .addCase(deletePost.rejected, (state, action) => {
       //   state.loading = false;
       //   state.error = action.payload;
+      //   console.error("Error deleting post:", action.payload);
       // })
 
 
