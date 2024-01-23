@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const user = JSON.parse(sessionStorage.getItem("user"))
 
 
 const initialState = {
@@ -21,7 +20,7 @@ export const createSpace = createAsyncThunk('createslice', async (spaceData) => 
         method: 'post',
         headers: {
             'projectId': 'bc73q6nn4srr',
-            'Authorization': `Bearer ${user?.token}`
+            Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('user'))?.token}`,
         },
         body: formData
     }

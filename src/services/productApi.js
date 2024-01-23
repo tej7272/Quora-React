@@ -1,12 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const user = JSON.parse(sessionStorage.getItem("user"))
 
 
 const productsHeader = {
     'Content-Type': 'application/json',
     projectId: 'bc73q6nn4srr',
-    Authorization: `Bearer ${user?.token}`
+    Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('user'))?.token}`,
 }
 
 const baseUrl = 'https://academics.newtonschool.co/api/v1';

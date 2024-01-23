@@ -6,7 +6,6 @@ const initialState = {
     error: ""
 }
 
-const user = JSON.parse(sessionStorage.getItem('user'));
 
 export const addComments = createAsyncThunk('addcomments', async ({postId, commentValue}) => {
     const url = `https://academics.newtonschool.co/api/v1/quora/comment/${postId}`;
@@ -15,7 +14,7 @@ export const addComments = createAsyncThunk('addcomments', async ({postId, comme
         method: 'POST',
         headers: {
             projectId: 'bc73q6nn4srr',
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('user'))?.token}`,
             "Content-Type": "application/json",
         },
             body: JSON.stringify({ content: commentValue }),

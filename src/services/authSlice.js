@@ -46,7 +46,8 @@ export const loginUser = createAsyncThunk('loginuser', async (Credentials) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'projectId': projectID
+      'projectId': projectID,
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('user'))?.token}`,
     },
     body: JSON.stringify(Credentials)
   });

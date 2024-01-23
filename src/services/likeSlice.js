@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const user = JSON.parse(sessionStorage.getItem('user'));
 
 const initialState = {
     likes : [],
@@ -14,7 +13,7 @@ export const addLikeCount = createAsyncThunk('addlikecount', async(postId) => {
     const options = {
         method : 'post',
         headers : {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('user'))?.token}`,
             projectId: `bc73q6nn4srr`,
         },
         body: {
@@ -42,7 +41,7 @@ export const deleteLikeCount = createAsyncThunk('deletelikecount', async(postId)
     const options = {
         method : 'delete',
         headers : {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${JSON.parse(sessionStorage.getItem('user'))?.token}`,
             projectId: `bc73q6nn4srr`,
         },
     }
