@@ -45,8 +45,6 @@ const HomeData = (props) => {
 
   const postId = _id;
 
-  console.log(postId);
-
   const { data: getCommentsData, refetch : commentRefetch, isLoading } = useCommentQuery(postId);
   // const {refetch: postRefetch } = useGetPostDataQuery();
 

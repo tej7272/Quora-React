@@ -14,11 +14,6 @@ const Homepage = () => {
 
   const { data: postData,isLoading } = useGetPostDataQuery();
 
-  console.log(postData);
-
-  
-
-
   useEffect(() => {
     if (!searchTerm) {
 
