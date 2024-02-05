@@ -19,8 +19,6 @@ export const createPost = createAsyncThunk('createpost', async (inputValue) => {
     body: formData
   });
 
-  console.log(JSON.parse(sessionStorage.getItem("user"))?.token);
-
   if (response.ok) {
     const data = await response.json();
     return await data;

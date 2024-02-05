@@ -18,7 +18,7 @@ export const productApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),
     endpoints: (builder) => ({
         getPostData: builder.query({
-            query: () => createRequest(`/quora/post?limit=75`)
+            query:  () => createRequest(`/quora/post?limit=75`)
         }),
         Comment: builder.query({
             query: (postId) => createRequest(`/quora/post/${postId}/comments`)
